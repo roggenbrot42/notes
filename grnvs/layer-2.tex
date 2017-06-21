@@ -1,11 +1,11 @@
-# # OSI Modell: Layer 2
+\section{OSI Modell: Layer 2} 
 
-## Graphdarstellung
+\subsection{Graphdarstellung} 
 
 Wir stellen Netzwerke oft als Graphen dar, wobei wir eine bestimmte Notation
 verwenden.
 
-### Gerichtete Graphen
+\subsubsection{Gerichtete Graphen} 
 
 Ein gerichteter Graph stellt ein *asymmetrisches* Netzwerk dar, wobei Kanten
 also nicht symmetrisch sind. Ein solcher Graph $G = (N, A)$ ist durch eine Menge
@@ -16,13 +16,13 @@ sodass fuer eine gerichtete Kante von $i$ nach $j$ ein Paar $(i, j) \in A$ ist.
 Hierbei kann eine Kante $(i, j)$ noch *Kosten* $c_{i,j}$ haben. Das waeren
 beispielsweise die Kosten, um Daten vom Knoten $i$ zum Knoten $j$ zu uebertragen.
 
-### Ungerichtete Graphen
+\subsubsection{Ungerichtete Graphen} 
 
 Ein *symmetrisches* Netzwerk laesst sich als *ungerichteter* Graph $G = (N, E)$
 darstellen, wobei $N$ wieder eine Menge an Knoten ist und $E$ eine Menge an
 Kanten (hier: *Edges*). Die Kanten koennen wieder Kosten haben.
 
-### Pfade
+\subsubsection{Pfade} 
 
 Ein Pfad zwischen zwei Knoten $s, t \in N$ ist eine Menge $P_{s,t} = \{(s, i),
 ..., (j, t)\}$ gerichteter Kanten, die $s$ und $t$ miteinander
@@ -31,10 +31,10 @@ verbinden. Hierbei nennt man $s$ oft den *Source* und $t$ den *Terminal* Knoten.
 Die *Kosten* $c(P)$ eines Pfades $P_{s,t}$ entsprechen dabei den Kosten der Kanten
 in diesem Pfad: $c(P) = \sum_{(i,j) \in P_{s,t}} c_{i,j}$
 
-Die *Laenge* eines Pfades entspricht der __Anzahl an Kanten__ auf dem Pfad:
+Die *Laenge* eines Pfades entspricht der \_\_Anzahl an Kanten\_\_ auf dem Pfad:
 $l(P_{s,t}) = |P_{s,t}|$. Diese Pfadlaenge nennt man auch *Hop Count*.
 
-### Besondere Baumstrukturen
+\subsubsection{Besondere Baumstrukturen} 
 
 Ein Baum ist ein azyklischer, zusammenhaengender Graph. Wir unterscheiden dabei
 zwischen zwei Arten von Baeumen, die fuer uns interessant sind:
@@ -46,7 +46,7 @@ zwischen zwei Arten von Baeumen, die fuer uns interessant sind:
 
 Diese Baeume sind im Allgemeinen nicht identisch.
 
-## Verbindungen
+\subsection{Verbindungen} 
 
 Wir koennen eine Verbindung bezueglich mehreren Eigenschaften charakterisieren:
 
@@ -58,7 +58,7 @@ Wir koennen eine Verbindung bezueglich mehreren Eigenschaften charakterisieren:
 Diese Eigenschaften wollen wir fuer einfache *Punkt-zu-Punkt* Verbindungen
 charakterisieren.
 
-### Uebertragungsrate
+\subsubsection{Uebertragungsrate} 
 
 Die *Uebertragungsrate* $r$ einer Verbindung wird in Bit/s gemessen und sagt
 aus, mit welcher Rate Daten auf eine Leitung gelegt werden koennen. Sie haengt
@@ -66,21 +66,21 @@ eng mit der *Uebertragungsverzoegerung* $t_s$, auch *Serialisierungszeit*
 (*Serialization Delay* oder *Transmission Delay*) genannt, zusammen. Die Formel
 ergibt sich dabei analog zum Geschwindigkeit-Weg-Zeit Verhaeltnis:
 
-$$t_s = \frac{L}{r}$$
+$t_s = \frac{L}{r}$
 
 Hierbei ist $L$ die Anzahl an Bits, die mit der Uebertragungsrate $r$ in $t_s$
 Sekunden uebertragen werden sollen. Wollen wir so also zum Beispiel 1500 Byte
 mit einer Rate von 100 MBit/s (FastEthernet) senden, so erhalten wir eine
 Serialisierungszeit von:
 
-$$t_s = \frac{L}{r} = \frac{1500 \cdot 8}{100 \cdot 10^6} = 120 \mu\text{s}$$
+$t_s = \frac{L}{r} = \frac{1500 \cdot 8}{100 \cdot 10^6} = 120 \mu\text{s}$
 
 Intuitiv kann man sich die Serialisierungszeit als die Zeit vorstellen, die man
 benoetigt, um Murmeln (Daten) in ein Rohr zu stopfen. Man kann diese Murmeln
 nicht alle gleichzeitg in das Rohr stopfe, insofern dauert es eine Weile, bis
 alle Murmeln im Rohr ankommen. Das ist gerade die *Serialisierungszeit*.
 
-### Ausbreitungsgeschwindigkeit
+\subsubsection{Ausbreitungsgeschwindigkeit} 
 
 Wenn wir Daten ueber ein Kabel senden wollen, dann gibt uns die
 Serialisierungszeit an, wie lange es dauert, bis die Daten allesamt auf das
@@ -99,7 +99,7 @@ gibt uns die Ausbreitungsverzoegerung $t_p$ an, wie lange es dauert, bis der
 erste Bit beim Empfaenger ankommt. In Abhaengigkeit von $\nu$ und der *Distanz*
 $d$ der Uebertragung berechnet sie sich also durch:
 
-$$t_p = \frac{d}{\nu c}$$
+$t_p = \frac{d}{\nu c}$
 
 Wenn wir jetzt also wieder an die Murmeln und das Rohr denken, so sagt und die
 Ausbreitungsverzoegerung, wie lange es dauert, bis die erste Murmel am anderen
@@ -107,7 +107,7 @@ Ende des Rohres ankommt, was natuerlich von der Distanz (Laenge) des Rohres und
 der Art des Rohres (Medium) ankommt. Die Serialisierungszeit sagte uns nur, wie
 lange es dauert, die Murmeln in das Rohr zu stopfen.
 
-### Uebertragungszeit
+\subsubsection{Uebertragungszeit} 
 
 Jetzt wissen wir also, wie lange es dauert unsere Daten auf das Kabel zu legen
 (Serialisierungszeit) und wie lange es dauert, bis der erste Bit dann am anderen
@@ -118,7 +118,7 @@ Nun ja: Nach $t_s$ Sekunden liegt der letzte Bit auf der Leitung. Nach $t_p$
 Sekunden kommt dieser dann am anderen Ende an. Folglich ist die gesamte
 Uebertragungszeit $t_d$ (*delay*) gerade gleich:
 
-$$t_d = t_s + t_p = \frac{L}{r} + \frac{d}{\nu c}$$
+$t_d = t_s + t_p = \frac{L}{r} + \frac{d}{\nu c}$
 
 Man kann diese verschiedenen Zeiten in einem *Weg-Zeit-Diagramm* grafisch
 veranschaulichen. Hierbei betrachtet man zwei Zeitachsen fuer zwei Knoten $i,
@@ -128,7 +128,7 @@ naemlich auch schoen, dass es eine Weile ($t_p$) dauert, bis der erste und dann
 der letzte serialisierte Bit von $i$ bei $j$ ankommt. Das wird dadurch
 visualisiert, dass die "Uebertragungskante" von $i$ nach $j$ schraeg ist.
 
-```
+\begin{verbatim}
     i               j
     |_______________|
     |    \_____     | t_p
@@ -139,9 +139,9 @@ t_p |   \_____      |
     |_________\_____|
     |               |
     v               v
-```
+\end{verbatim}
 
-### Speicherkapazitaet eines Kanals
+\subsubsection{Speicherkapazitaet eines Kanals} 
 
 Da sich Signale nur mit endlicher Geschwindigkeit ausbreiten, dauert es wie
 gezeigt eine Weile ($t_p$), bis der erste Bit beim Empfaenger ankommt. In der
@@ -156,7 +156,7 @@ fast sagen, dass das Kabel eine gewisse *Speicherkapazitaet* hat. Diese
 Speicherkapazitaet $C$ wird auch *Bandbreitenverzoegerungsprodukt* genannt und
 ist also gegeben durch:
 
-$$C = t_p \cdot r$$
+$C = t_p \cdot r$
 
 Diese Kapazitaet ist also die maximale Anzahl an Bits, die sich in einer
 Senderichtung gleichzeitig auf der Leitung befinden koennen. Man kann dann auch
@@ -164,7 +164,7 @@ sagen, dass ein Bit eine gewisse "Breite" hat, indem man die Distanz durch die
 Kapazitaet teilt. Kann man beispielsweise 50 bit auf einem 100 Meter breiten
 Kabel speichern, dann ist ein Bit also $100 / 50 = 2$ Meter lang.
 
-### Uebertragungsrichtung
+\subsubsection{Uebertragungsrichtung} 
 
 Wir unterscheiden noch hinsichtlich der Richtung einer Uebertragung zwischen
 zwei Knoten $i, j$. Es gibt drei Moeglichkeiten:
@@ -176,7 +176,7 @@ zwei Knoten $i, j$. Es gibt drei Moeglichkeiten:
 3. Vollduplex: Bidirektional, wobei gleichzeitig in beide Richtungen gesendet
    werden kann.
 
-### Multiplexing
+\subsubsection{Multiplexing} 
 
 Mehrfachzugriff oder *Multiplexing* ist die Bezeichnung fuer die Situation, wo
 mehrere Nachrichten (verschiedener Teilnehmer) *gleichzeitig* ueber einen Kanal
@@ -231,7 +231,7 @@ Weisen implementiert werden:
    *konkurrieren* also quasi um das Medium. Diese Variante loest das Problem der
    hohen Verzoegerung von synchronem TDM.
 
-### ALOHA
+\subsubsection{ALOHA} 
 
 *ALOHA* ist ein *Random Access* (asynchrones) TDMA Verfahren, bei welchem
  Empfaenger um ein Medium *konkurrieren*. Konkret geht man bei diesem Verfahren
@@ -269,7 +269,7 @@ Dann modellieren wir die Situation wie folgt:
 
 Dabei betrachten wir eine Zufallsvariable $X_t$, welche beschreibt, wieviele Knoten im Intervall $[t, t + T[$ gleichzeitg senden wollen. Die Wahrscheinlichkeit, dass $X_t = k$ fuer $k$ Knoten ist durch die Poission-Verteilung dann wie folgt beschrieben:
 
-$$\Pr[X_t = k] = \frac{\lambda^k e^{-\lambda}}{k!}$$
+$\Pr[X_t = k] = \frac{\lambda^k e^{-\lambda}}{k!}$
 
 Die Besonderheit an einer Poisson-Verteilung im Vergleich zu einer
 Bernoulli-Verteilung hierbei ist, dass wir nicht mehr $N$ unabhaengige
@@ -317,30 +317,30 @@ Das Intervall $]t_0 - T, t_0 + T[$ nennt man folglich das *kritische Intervall*.
 
 Somit:
 
-$$
+
 \begin{align}
 	p_0 &= \Pr[X_{t_0 - T} = 0] \cdot \Pr[X_{t_0} = 1]\\
 	    &= \frac{0^k e^{-\lambda}}{0!} \cdot \frac{\lambda^1 e^{-\lambda}}{1!}\\
 		&= e^{-\lambda} \cdot \lambda e^{-\lambda}
 		&= \lambda e^{-2\lambda}
 \end{align}
-$$
+
 
 Hierbei sei angemerkt, dass das konkrete Zeitintervall fuer die
 Poisson-Verteilung egal ist, da wir annehmen, dass die Anzahl sendender
 Stationen fuer jedes Zeitintervall gleichverteilt ist.
 
-#### Slotted ALOHA
+\paragraph{Slotted ALOHA} 
 
 Eine Variante von ALOHA, welche ein wenig besser funktioniert, ist *Slotted
 ALOHA*. Hierbei duerfen Stationen nicht mehr zu beliebigen Zeitpunkten zu senden
 beginnen, sondern nur mehr am Anfang diskreter Zeitintervalle $nT: n \in
-\mathbb{N}_0$. Somit verschwindet also das hintere Intervall $]t_0 - T,
+\mathbf{N}_0$. Somit verschwindet also das hintere Intervall $]t_0 - T,
 t_0[$ aus dem kritischen Bereich, da zum Zeitpunkt $t_0$ jede Uebertragung aus dem vorherigen Slot (ab $t_0 - T$) schon vollendet sein muss. Der kritische Bereich ist somit auch nur mehr $T$ lang und nicht $2T$, wodurch sich die Wahrscheinlichkeit fuer eine erfolgreiche Uebertragung auf den ersten Term von oben reduziert:
 
-$$p_0 = \Pr[X_{t_0} = 1] = \lambda e^{-\lambda} = \frac{\lambda}{e^\lambda}$$
+$p_0 = \Pr[X_{t_0} = 1] = \lambda e^{-\lambda} = \frac{\lambda}{e^\lambda}$
 
-### CSMA
+\subsubsection{CSMA} 
 
 Eine einfache Verbesserung von ALOHA bzw. Slotted ALOHA (welches immer ueber
 normalen ALOHA zu bevorzugen ist) ist das Prinzip *Listen before Talk*, einer
@@ -418,7 +418,7 @@ Slot senden. Hierbei hilft $p$-persistentes CSMA eben aus, da bei geringem $p$
 nicht beide Stationen dann wirklich senden wuerden. Am guenstigsten scheint im
 Uebrigen $0.01$-persistentes und $0.1$-persistentes CSMA zu sein.
 
-### CSMA/CD
+\subsubsection{CSMA/CD} 
 
 Wie oben beschrieben verhindert CSMA Kollisionen also nicht. Eine Kollision
 wuerde von sendenden Stationen also so bemerkt, dass von der Basisstation keine
@@ -449,7 +449,7 @@ Besonders wichtig ist hierbei, dass die Serialisierungszeit von Nachrichten fuer
 die Verwendung von JAM Signalen richtig gewaehlt werden muss. Konkret muss
 gelten:
 
-$$t_{s_{min}} = 2 t_p \iff L_{min} = \frac{2d}{\nu c} r$$
+$t_{s_{min}} = 2 t_p \iff L_{min} = \frac{2d}{\nu c} r$
 
 Die Serialisierungszeit muss also zwei mal so gross, wie die
 Ausbreitungsverzoegerung sein. Wir ueberlegen uns, wieso. Dafuer nehmen wir
@@ -481,7 +481,7 @@ Beispiel verwendet Ethernet (welches CSMA/CD verwendet) *Binary Exponential
 Backoff*. Hierbei wird bei der $k$-ten Wiederholung einer Nachricht (also nach
 der $k$-ten Kollision):
 
-1. Eine __zufaellige__ Anzahl an Slotzeiten $n$ aus $\{0, 1, \min(2^{k - 1},
+1. Eine \_\_zufaellige\_\_ Anzahl an Slotzeiten $n$ aus $\{0, 1, \min(2^{k - 1},
    1024)\}$ gewaehlt.
 2. Gerade so viele Slotzeiten gewartet, bis man es wieder probiert.
 
@@ -493,7 +493,7 @@ Es ist hierbei uebrigens sehr wichtig, dass eine *zufaellige* Anzahl an
 Slotzeiten gewaehlt wird. Wenn $A$ und $B$ dieselbe Slotzeit waehlen wuerden,
 kaeme es halt nicht sofort, sondern nach $x$ Slotzeiten zur Kollision.
 
-### CSMA/CA
+\subsubsection{CSMA/CA} 
 
 Collision Detection (CD) hat es uns erlaubt, Kollisionen zu erkennen, noch nicht
 aber, sie zu *verhindern*. Das ist das Themengebiet der *Collision Avoidance*
@@ -542,7 +542,7 @@ Anmerkungen:
   gesteuert werden. Das nennt man dann *ad-hoc Modus*. Die Geraete im *ad-hoc
   Modus* nennt man dann *Service Set*.
 
-### Token Passing
+\subsubsection{Token Passing} 
 
 Ein weiteres Verfahren, dass zwar nicht CSMA (weder carrier sense) ist, aber
 dennoch CA anbietet, ist *Token Passing*. Hierbei werden Stationen zu einem
@@ -584,16 +584,16 @@ das Token erst warten muss. Auch ist es oft schwer, Stationen im Netzwerk
 ueberhaupt zu einem Ring zusammenzuschliessen. Es wird daher heute fast gar
 nicht mehr genutzt.
 
-https://en.wikipedia.org/wiki/Token_ring
+https://en.wikipedia.org/wiki/Token\_ring
 
-## Rahmen
+\subsection{Rahmen} 
 
 Wir beschaeftigen uns nun mit *Rahmen*, womit wir einfach Nachrichten auf der
 Sicherungsschicht meinen. Konkret sehen wir uns an, wie Rahmen gebildet werden,
 wie Empfaenger in Rahmen adressiert werden und Fehler in Rahmen erkannt werden
 koennen.
 
-### Erkennung von Rahmengrenzen
+\subsubsection{Erkennung von Rahmengrenzen} 
 
 Fuer die physikalische Schicht sind Nachrichten lediglich eine Folge von
 Bits. Natuerlich haben Nachrichten, zumindest fuer uns, aber *Grenzen*. Diese
@@ -609,7 +609,7 @@ Hierbei gibt es verschiedene Moeglichkeiten:
 Jedenfalls wollen wir die Rahmengrenzen so bilden, dass deswegen nicht weniger
 moegliche Daten uebertragbar sind.
 
-#### Laengenangaben
+\paragraph{Laengenangaben} 
 
 Eine Idee zur Festlegung von Rahmengrenzen waere es, vor jeder Nachricht die
 Groesse der Nachricht zuerst zu senden. Wenn man also z.B. $30$ Bit an Daten
@@ -618,7 +618,7 @@ Empfaenger, wieviele Bits er erwarten kann. Das setzt natuerlich vorraus, dass
 dieses Laengenfeld eindeutig aus dem Datenstrom zu erkennen ist (zumindest fuer
 die erste Nachricht nach einer Idle-Phase).
 
-#### Steuerzeichen
+\paragraph{Steuerzeichen} 
 
 Schon in der physikalischen Schicht wurde der Begriff von *4B5B Codes*
 eingefuehrt, z.B. zur Fehlererkennung bei der Kanalkodierung. Dieses Prinzip,
@@ -645,9 +645,9 @@ FastEthernet (100 MBit/s) benutzt MLT-3 mit 4B5B Codes und signalisiert Start
 und Ende durch Steuerzeichen.
 
 Auch auf der Darstellungsschicht (6) werden Steuerzeichen verwendet,
-beispielsweise beim ASCII-Code (`\0`, `\a`, `\n` etc.) oder in Emacs <3 (`M-x C-l`).
+beispielsweise beim ASCII-Code (`\\0`, `\\a`, `\\n` etc.) oder in Emacs <3 (`M-x C-l`).
 
-#### Begrenzungsfelder und Bit-Stopfen
+\paragraph{Begrenzungsfelder und Bit-Stopfen} 
 
 Bei dieser Idee markieren wir den Start und das Ende einer Nachricht durch eine
 bestimmte Bitfolge, beispielsweise 01110. Dann muessen wir nur noch dafuer
@@ -665,7 +665,7 @@ Man muss hierbei auch nicht darum kuemmern, die Sequenz 011010 zu escapen. Nach
 zwei Einsen wuerde naemlich eben eine 0 eingefuegt (0110010) und beim Empfaenger
 wieder entfernt.
 
-#### Coderegelverletzung
+\paragraph{Coderegelverletzung} 
 
 Wie schon bei der Leitungskodierung beschrieben, kann man die Tatsache
 ausnutzen, dass bestimmte Kodierungsverfahren wie RZ, NRZ und Manchester
@@ -681,7 +681,7 @@ Nullen kamen und bei Manchester Encoding auch erst der zweite Edge das Symbol (0
 oder 1) signalisieren wuerde (der erste Edge bringt das Signal erst einmal auf +
 1 oder -1).
 
-### Adressierung
+\subsubsection{Adressierung} 
 
 Wir interessieren uns nun dafuer, wie Stationen eigentlich adressiert werden
 koennen. Dabei betrachen wir vorerst *Direktverbindungsnetze*, wo also jeder
@@ -721,9 +721,9 @@ den folgenden Aufbau:
 
 MAC Adressen werden von den meisten IEEE 802 Protokollen verwendet
 bzw. unterstuetzt, insbesondere Ethernet, WiFi und Bluetooth
-(https://en.wikipedia.org/wiki/MAC_address).
+(https://en.wikipedia.org/wiki/MAC\_address).
 
-### Fehlererkennung
+\subsubsection{Fehlererkennung} 
 
 Ein typisches L2 (z.B. Ethernet) Rahmen besteht aus den folgenden Teilen:
 
@@ -735,7 +735,7 @@ Ein typisches L2 (z.B. Ethernet) Rahmen besteht aus den folgenden Teilen:
 
 Mit dem letzten Punkt, der Checksum bzw. der FCS, wollen wir uns nun
 beschaeftigen. Die Checksum, zu Deutsch *Pruefsumme*, ist ein
-__fehlererkennender Code__. Im Gegensatz zur Kanalkodierung wollen wir hier
+\_\_fehlererkennender Code\_\_. Im Gegensatz zur Kanalkodierung wollen wir hier
 Fehler nur *erkennen* und nicht *korrigieren*.
 
 Ein konkretes Beispiel fuer eine Checksum, die z.B. bei Ethernet verwendet wird,
@@ -751,12 +751,12 @@ Antwort: Gar keine, CRC kann Fehler nur *erkennen*!
 Der CRC wird bei Ethernet hierbei auf der ganzen PDU, also inklusive
 Ether-Header berechnet.
 
-#### Theorie
+\paragraph{Theorie} 
 
 Fuer CRC benutzen wir die Eigenschaft von Bit-Sequenzen, auch Polynome
 darstellen zu koennen. Ein Datenwort der Laenge $n$ Bit gibt dabei ein Polynom
 
-$$a(x) = \sum_{i=0}^{n - 1} a_i x^i$$
+$a(x) = \sum_{i=0}^{n - 1} a_i x^i$
 
 vom Grad $n - 1$ an, wobei $a_i \in \{0, 1\}$ ($n$ Bit = Grad $n - 1$ weil bei
 Grad $n - 1$ auch $x^0$ als konstanter Term enthalten ist). Jeder Term (jede
@@ -770,8 +770,8 @@ auch sieht ergeben 8 Bit hier ein Polynom von maximalem Grad 7.
 
 Wir koennen nun alle Polynome vom Grad $n$ in einer Menge
 
-$$F_q[x] = \left\{a \,|\, a(x) = \sum_{i=0}^{n-1} a_ix^i, a_i \in \{0,
-1\}\right\}$$
+$F_q[x] = \left\{a \,|\, a(x) = \sum_{i=0}^{n-1} a_ix^i, a_i \in \{0,
+1\}\right\}$
 
 zusammenfassen, welche genau $q = 2^n$ Elemente hat (jeder Term kann enthalten
 sein, oder nicht / jeder Bit kann gesetzt sein, oder nicht). Wenn wir nun noch
@@ -831,7 +831,7 @@ aequivalent zu einem anderen Polynom sind, was wir nicht wollen (sonst koennten
 fehlerhafte Bitsequenzen den urspruenglichen ident sein, was das ganze Konzept
 von Fehlererkennung zu Nichte machen wuerde).
 
-#### Praxis
+\paragraph{Praxis} 
 
 Konkret machen wir bei CRC nun folgendes: Wir wollen also eine $n$-Bit Checksume
 (Frame Check Sequence) berechnen, beispielsweise fuer die L2-Payload eines
@@ -842,14 +842,14 @@ Reduktionspolynom also maximal Grad $n - 1$ hat und somit genau $n$ Bit
 benoetigt ($x^0, ..., x^{n - 1}$).
 
 Um nun die CRC-Checksum $c(x)$ unserer Daten $d(x)$ zu erhalten, multiplizieren
-wir unsere Daten $d(x)$ zunaechst mit $x^n$, wo $n = \grad(r(x))$. Das ist
+wir unsere Daten $d(x)$ zunaechst mit $x^n$, wo $n = grad(r(x))$. Das ist
 aequivalent dazu, die Bitsequenz $d(x)$ (also unser Datenwort), um $n$ Bit nach
 links zu verschieben, da $x^n \equiv 1000...000$ mit $n$ Nullen ist. Das tun
 wir, um Platz fuer die Checksum zu machen, welche ja $n$ Bit lang ist.
 
-Dann fuehren wir die Polynomdivision $d(x) \div r(x)$ durch, wobei wir uns aber
-fuer den Rest $d(x) \mod r(x)$ interessieren. Dieses Restpolynom ist naemlich
-gerade unsere Checksum $c(x)$. Also $c(x) = d(x) \mod r(x)$. Es hat eben maximal
+Dann fuehren wir die Polynomdivision $d(x) div r(x)$ durch, wobei wir uns aber
+fuer den Rest $d(x) mod r(x)$ interessieren. Dieses Restpolynom ist naemlich
+gerade unsere Checksum $c(x)$. Also $c(x) = d(x) mod r(x)$. Es hat eben maximal
 Grad $n - 1$ und benoetigt somit $n$ Bit Platz. Wir addieren diese Checksum
 auf das verschobene Polynom drauf bzw. fuehren eine XOR-Operation auf der
 verschobenen Bit-Sequenz mit der Rest-Bit-Sequenz durch. Die Nachricht $s(x)$,
@@ -859,7 +859,7 @@ Wir senden diese Nachricht $s(x)$ also. Der Empfaenger macht dann folgendes:
 
 1. Er kennt das selbe Reduktionspolynom $r(x)$.
 2. Fuehrt dann auf den Daten wieder eine Polynomdivision durch.
-3. Ist der Rest $s(x) \mod r(x) = 0$, so ist mit *hoher Wahrscheinlichkeit* kein
+3. Ist der Rest $s(x) mod r(x) = 0$, so ist mit *hoher Wahrscheinlichkeit* kein
    Uebertragungsfehler passiert.
 4. Ist der Rest ungleich Null, so ist *sicher* ein Fehler aufgetreten.
 
@@ -900,7 +900,7 @@ CRC erkennt jedoch immer:
 2. Alle isolierten 2-Bit Fehler,
 3. Einige Burst-Fehler, die laenger als $N$ sind.
 
-#### Beispiel
+\paragraph{Beispiel} 
 
 Wir betrachten ein Datenpolynom $d(x) = x^7 + x^5 + x^2 + 1$ von Grad $7$ sowie
 ein Reduktionspolynom $r(x) = x^3 + x^2 + 1$ von Grad $n = 3$. Das entspricht
@@ -912,7 +912,7 @@ Reduktionspolynom. Die Checksum wird drei Bit lang sein. Dann:
 2. Dann fuehren wir die Polynomdivision durch. Hierbei verwenden wir die
    XOR-Regeln als Addition (wobei Subtraktion = Addition im GF(2)):
 
-```
+\begin{verbatim}
 10100101000 : 1101 = 11010101
 1101 (XOR) (da die erste Ziffer im Polynom schon 1, ergibt oben erste 1)
 ----
@@ -941,7 +941,7 @@ Null waren schreiben/OR-en wir sie eigentlich einfach rein):
 XOR 00000000001 = c(x)
     -----------
     10100101001 = s(x)
-```
+\end{verbatim}
 
 Der Empfaenger macht nun mit $s(x)$ wieder eine Polynomdivision:
 
@@ -1033,7 +1033,7 @@ Und fuehren wieder beim Empfaenger die Polynomdivision durch:
 Wie man sieht, haben wir hier eine Fehlermaske zu den Daten hinzu getan, wobei
 der Empfaenger dies gar nicht merken wuerde.
 
-### Links
+\subsubsection{Links} 
 
 Wir wollen nun die verschiedenen Arten von Verbindungen oder *Links* auf Schicht
 2 betrachten. Dabei gibt es grundsaetzlich zwei Varianten:
@@ -1043,7 +1043,7 @@ Wir wollen nun die verschiedenen Arten von Verbindungen oder *Links* auf Schicht
 
 Die naechsten Absaetze besprechen diese weiterfuehrend.
 
-#### Hubs
+\paragraph{Hubs} 
 
 Ein Hub ist ein enorm simpler Baustein in einem Direktverbindungsnetz, an
 welchen mehrere Knoten angebunden sein koennen. Sendet ein Knoten $A$ an einen
@@ -1070,7 +1070,7 @@ Hubs werden in modernen Netzwerken aufgrund der impliziten Kollisionsdomaene
 fast gar nicht mehr verwendet. Ein Switch (siehe unten) ist heutzutage billig
 genug, um nur Switches und nicht Hubs zu verwenden.
 
-#### Switch
+\paragraph{Switch} 
 
 Die zweite Art von Verbindungsknoten auf Schicht 2 sind *Switches*. Diese sind
 um einiges intelligenter als Hubs. Ein Switch hat dabei verschiedene *Ports*,
@@ -1117,7 +1117,7 @@ Es darf nun also auf jeder Seite, Port 0 und Port 1, gleichzeitig ein Host
 senden. Der Switch wird die Pakete dann jeweils weiterleiten. Somit unterbricht
 der Switch also die Kollisiondomaene in der Mitte:
 
-```
+\begin{verbatim}
      |
      |
      |
@@ -1129,7 +1129,7 @@ B    |    D
      |
      |
 	 |
-```
+\end{verbatim}
 
 Wenn links oder rechts zwei Hosts gleichzeitig senden, z.B. $A$ und $B$, kommt
 es noch immer zu einer Kollision. Wenn aber ein Host links und ein Host rechts
@@ -1140,7 +1140,7 @@ Ist pro Switchport genau ein Host angeschlossen, so spricht man von
 Regelfall. Dann duerfen also je zwei Hosts gleichzeitig miteinander
 kommunizieren (also, jeder mit jedem).
 
-```
+\begin{verbatim}
     |
   A | C
    \|/
@@ -1148,7 +1148,7 @@ kommunizieren (also, jeder mit jedem).
    /|\
   B | D
     |
-```
+\end{verbatim}
 
 Switches koennen im Uebrigen auch dazu genutzt werden, Netzteile mit
 verschiedenen Zugriffsverfahren zu verbinden! Beispielsweise kann am einen Port
@@ -1172,7 +1172,7 @@ Es gibt auch noch zwei verschiedene Arten von Switches:
    weitergesendet. Insbesondere wird ein Rahmen schon weitergeleitet, sobald die
    Destination Address Bytes des L2-Headers (ersten 6 Byte) erhalten wurden.
 
-https://en.wikipedia.org/wiki/Network_switch#Layer_2
+https://en.wikipedia.org/wiki/Network\_switch\#Layer\_2
 
 Weitere Anmerkung:
 

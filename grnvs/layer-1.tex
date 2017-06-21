@@ -1,12 +1,12 @@
-# OSI Modell: Layer 1
+\section{ OSI Modell: Layer 1}
 
-$\newcommand{\SNR}{\mathop{\rm SNR}\nolimits}$
-$\newcommand{\nrz}{\mathop{\rm nrz}\nolimits}$
-$\newcommand{\rz}{\mathop{\rm rz}\nolimits}$
-$\newcommand{\manc}{\mathop{\rm manc}\nolimits}$
-$\newcommand{\rect}{\mathop{\rm rect}\nolimits}$
+%$\newcommand{\SNR}{\mathop{\rm SNR}\nolimits}$
+%$\newcommand{\nrz}{\mathop{\rm nrz}\nolimits}$
+%$\newcommand{\rz}{\mathop{\rm rz}\nolimits}$
+%$\newcommand{\manc}{\mathop{\rm manc}\nolimits}$
+%$\newcommand{\rect}{\mathop{\rm rect}\nolimits}$
 
-## Signale und Information
+\subsection{ Signale und Information}
 
 Ein *Signal* ist eine *zeitabhängige*, messbare physikalische Größe. Dabei kann
 man definierten messbaren *Signaländerungen* ein *Symbol* zuordnen. Diese
@@ -16,9 +16,9 @@ Symbole repräsentieren dann Information. Beispiele für Signale wären:
 * Spannung (Telegraphie)
 * Schall (Menschliche Sprache)
 
-### Informationstheorie
+\subsubsection{ Informationstheorie}
 
-#### Informationsgehalt
+\subsection{ Informationsgehalt}
 
 Betrachten wir eine Informationsquelle (ein Signal) sowie ein konkretes Symbol,
 dass von dieser Quelle emittiert wird. Nehmen wir nun an, die Quelle emittiert
@@ -37,7 +37,7 @@ wiederum wenig Information enthalten.
 Dieses Konzept kann man nun auch formalisieren. Wir betrachten hierzu die
 Wahrscheinlichkeitsverteilung $p(x)$, welche angibt, wie wahrscheinlich es ist,
 dass das nächste emittierte Symbol zu einem beliebigen Zeitpunkt gerade $x \in
-\mathbb{X}$ ist, wo wir mit $\mathbb{X}$ die Menge aller möglichen Symbole
+\mathbf{X}$ ist, wo wir mit $\mathbf{X}$ die Menge aller möglichen Symbole
 bezeichnen. Wir wollen nun ausdrücken, dass wenn die Wahrscheinlichkeit für ein
 Symbol hoch, sein Informationgehalt niedrig ist und umgekehrt. Dafür verwenden
 wir nun die Logarithmusfunktion, welche die Wahrscheinlichkeit sozusagen
@@ -50,7 +50,7 @@ Zehner-Potenzen sind. So ist $\log_{10}(10^{-10}) = -10$ und $\log_{10}(10^{-2})
 ist, negieren wir für den eigentlichen Informationsgehalt $I(x)$ eines Symbols
 noch den Wert des Logarithmus: $I(x) = -\log(p(x))$. Hierbei ist also
 $-\log(p(x)) = |\log(p(x))|$. Es gilt im Uebrigen, dass $\log(1/x) = -\log(x)$
-fuer $x \in \mathbb{R}$.
+fuer $x \in \mathbf{R}$.
 
 Wir können dabei die Basis des Logarithmus prinizipell selbst wählen, wobei sich
 die exakten Werte sowie Einheiten jedoch verändern würden. Wählen wir den
@@ -71,16 +71,16 @@ mit wenigen Bits (/Strichen -> Unär), da man sie über die Quelle häufiger sen
 muss. Die seltenen Symbole verteilen wir auf mehr Bits, welche teurer zu
 übertragen sind.
 
-#### Entropie
+\paragraph{ Entropie}
 
-Die *Entropie* $H(\mathbb{X})$ einer Informationsquelle $Q$ beschreibt nun den
+Die *Entropie* $H(\mathbf{X})$ einer Informationsquelle $Q$ beschreibt nun den
 *mittleren* Informationsgehalt aller von dieser Quelle emittierten Symbole
-$\mathbb{X}$. Dieser Wert wird also berechnet, indem man die Wahrscheinlichkeit
+$\mathbf{X}$. Dieser Wert wird also berechnet, indem man die Wahrscheinlichkeit
 $p(x)$ jeden Symbols $x$ mit seinem Informationsgehalt $I(x)$ multipliziert, und
 so über alle Symbole $x$ summiert:
 
-$$H(\mathbb{X}) = \sum_{x \in \mathbb{X}} p(x)I(x) = -\sum_{x \in \mathbb{X}}
-p(x)\log(p(x))$$
+$H(\mathbf{X}) = \sum_{x \in \mathbf{X}} p(x)I(x) = -\sum_{x \in \mathbf{X}}
+p(x)\log(p(x))$
 
 Wir berechnen also gerade den Erwartungswert $E_{x \sim p}[I]$ des
 Informationsgehalts der Symbole. Der resultierende Wert, welcher ebenso in Bits
@@ -107,10 +107,10 @@ emittierten Symbol beschreibt. In einem Kristall sind Moleküle hingegen starr.
 Ihre Entropie wäre also niedrig, weil es nur eine Konfiguration des Systems
 gibt.
 
-##### Maximale Entropie
+\paragraph{ Maximale Entropie}
 
 Wir fragen uns: Wie hoch kann die Entropie einer Quelle $Q$ mit Signalen
-$\mathbb{X}$ maximal sein?
+$\mathbf{X}$ maximal sein?
 
 Zunaechst: wie hoch muessen die Wahrscheinlichkeiten sein? Intuitiv ist klar:
 sie muessen alle gleich sein, die Wahrscheinlichkeitsverteilung muss also
@@ -122,9 +122,9 @@ Wenn wir nun also wissen, dass die Wahrscheinlichkeit fuer eine maximale
 Entropie uniform, also $1/n$ bei $n$ Signalen, sein muss, koennen wir die
 Entropieformel leicht umformen:
 
-$$H_{max}(\mathbb{X}) = -\sum_{x \in \mathbb{X}} p(x)\log(p(x)) = -\sum_{x \in
-\mathbb{X}} 1/n \cdot \log(1/n) = 1/n \cdot (-(n \cdot \log(1/n))) = -\log(1/n) =
-\log(n)$$
+$H_{max}(\mathbf{X}) = -\sum_{x \in \mathbf{X}} p(x)\log(p(x)) = -\sum_{x \in
+\mathbf{X}} 1/n \cdot \log(1/n) = 1/n \cdot (-(n \cdot \log(1/n))) = -\log(1/n) =
+\log(n)$
 
 Die maximale Entropie $H_{max}$ ist also gerade immer gleich $\log(n)$, wo $n$
 die Anzahl moeglicher Symbole ist. Da die Entropie ja den durchschnittichen
@@ -139,17 +139,17 @@ verschiedene Werte eben 8 Bit braucht. Das ist aber theoretisch nur der Fall,
 wenn jedes Symbol die selbe Auftrittswahrscheinlichkeit hat, sodass die Entropie
 maximal ist. Denn nur dann ist $H(Q) = H_{max}(Q) = \log(|Q|)$
 
-## Klassifizierung von Signalen
+\subsection{ Klassifizierung von Signalen}
 
 Wenn wir nun ein konkretes Signal $s(t)$ in Abhängigkeit des Zeitfortschritts
 $t$ betrachten, müssen wir uns noch entscheiden, welchen Werten oder
 Veränderungen des Signals wir welche Symbole zuordnen. Wir brauchen also eine
 Abbildung vom momentanen Signalwert auf ein Symbol. Wir könnten für ein binäres
-Alphabet $\mathbb{X} \in \{0, 1\}$ beispielsweise einfach die folgende Abbildung
+Alphabet $\mathbf{X} \in \{0, 1\}$ beispielsweise einfach die folgende Abbildung
 wählen:
 
-$$x_t = \begin{cases}0, \text{ wenn } s(t) \leq 0\\1, \text{
-sonst}\end{cases}.$$
+$x_t = \begin{cases}0, \text{ wenn } s(t) \leq 0\\1, \text{
+sonst}\end{cases}.$
 
 Jetzt stellen sich aber viele Fragen:
 
@@ -176,7 +176,7 @@ Jetzt stellen sich aber viele Fragen:
 * Wie wird Fehlern bei der Übertragung vorgebeugt?
 * Wie wird ein Signal überhaupt erzeugt und von $A$ nach $B$ gesandt?
 
-### Zeit- und Frequenzbereich
+\subsubsection{ Zeit- und Frequenzbereich}
 
 Nach dem *Fourier-Theorem* lassen sich alle periodischen Zeitsignale als
 Überlagerungen von gewichteten Sinus- und Kosinusschwingungen unterschiedlicher
@@ -184,8 +184,8 @@ Frequenzen auffassen. Haben wir dabei ein Signal $s(t)$ in Abhaengigkeit der
 Zeit $t$, so koennen wir nach Fourier dieses Signal durch eine *Fourier-Reihe*
 ausdrucken:
 
-$$s(t) = \frac{a_0}{2} + \sum_{k=1}^\infty (a_k \cos(k\omega t) + b_k \sin(k
-\omega t))$$
+$s(t) = \frac{a_0}{2} + \sum_{k=1}^\infty (a_k \cos(k\omega t) + b_k \sin(k
+\omega t))$
 
 Hierbei bezeichnet man das $k$-te Summenglied auch als die $k$-te
 Harmonische. $a_k$ und $b_k$ sind dann die Gewichtungen fuer die Sinus- und
@@ -204,8 +204,8 @@ $b_k$ des $k$-ten Gliedes berechnen. Wenn man das fuer alle $k \in \{1, ...,
 existieren folgende Formeln fuer das Kosinusgewicht $a_k$ und Sinusgewicht
 $b_k$:
 
-$$a_k = \frac{2}{T}\int_0^T s(t)\cos(k\omega t) \mathrm{dt} \text{ und } b_k =
-\frac{2}{T}\int_0^T s(t)\sin(k\omega t) \mathrm{dt}$$
+$a_k = \frac{2}{T}\int_0^T s(t)\cos(k\omega t) \mathrm{dt} \text{ und } b_k =
+\frac{2}{T}\int_0^T s(t)\sin(k\omega t) \mathrm{dt}$
 
 Der Gleichanteil ist hierbei $a_0/2$ und nicht $a_0$, um negative Frequenzen
 unter Betracht zu ziehen. Negative Frequenzen gibt es nicht wirklich, sie sind
@@ -216,7 +216,7 @@ der Gleichanteil, symbolisch bzw. zur Veranschaulichung, $a_0/2$ und nicht
 $a_0$. *Beachte also*: $a_0/2$ ist der Gleichanteil (wirklich die Verschiebung
 entlang der Ordinate), $a_0$ ist lediglich der erste Koeffizient.
 
-### Diskretisierung
+\subsubsection{ Diskretisierung}
 
 Natuerliche Signale sind sowohl *zeitkontiniuerlich* (es gibt fuer jedes
 Intervall ueberabzaehlbar unendlich viele Zeitpunkte $t$) sowie auch
@@ -233,7 +233,7 @@ koennen dann also fuer jedes diskrete Zeitintervall $[t_i, t_i + 1]$ einen
 diskreten Wert festhalten und in einem Datenwort fester Laenge (z.B. 16 Bits)
 speichern.
 
-#### Abtastung
+\paragraph{ Abtastung}
 
 Beim Abtasten legen wir ein Abtastintervall $T_a$ fest, sodass wir immer, wenn
 der kontinuierliche Zeitwert $t$ ein ganzzahliges Vielfaches von $T_a$ ist, den
@@ -242,7 +242,7 @@ aber kein ganzzahliges Vielfaches von $T_a$ ist, so soll unsere *Abtastfunktion*
 eine Null zurueckgeben. Wir bezeichnen dabei die Abtastfunktion fuer das Signal
 $s(t)$ durch $\hat{s}(t)$. Sie ist wie folgt definiert:
 
-$$\hat{s}(t) = s(t)\sum_{n=-\infty}^\infty \delta[t - nT_a]$$
+$\hat{s}(t) = s(t)\sum_{n=-\infty}^\infty \delta[t - nT_a]$
 
 Hierbei ist $\delta[t]$ der *Dirac*- oder *Delta-Impuls*, welcher genau fuer $t
 = 0$ einen Wert von $1$ annimmt, und sonst immer $0$. Er ist nuetzlich, um Werte
@@ -259,17 +259,17 @@ anderen Summenglieder $0$ sein, da fuer alle $m \neq n$ gelten wird: $t - mT_a
 \neq 0$. Wenn $t$ aber mit keinem dieser Abtastpunkte uebereinstimmt, dann wird
 die Summe fuer alle Glieder null sein, und $s(t) \cdot 0$ wird uns also keinen
 Signalwert geben. Der Koeffizient fuer $s(t)$, also die ganze Summe, ist also
-eins, immer dann wenn $t = nT_a$ fuer irgendein $n \in \mathbb{Z}$, und sonst
+eins, immer dann wenn $t = nT_a$ fuer irgendein $n \in \mathbf{Z}$, und sonst
 Null. Wir probieren also fuer jeden Zeitpunkt $t$ alle moeglichen $nT_a$ von
 minus unendlich bis plus unendlich aus (mathematisch ist das ja leicht
 realisierbar). Wenn eines passt, wird der Wert aufgenommen. Sonst nicht.
 
 So erhalten wir also eine mathematische Darstellung davon, was es bedeutet, ein
 Signal bezuglich der Zeit zu diskretisieren. Wir benutzen im Weiteren dann, wenn
-fuer $\hat{s}(t)$ gerade gilt $t = nT_a: n \in \mathbb{Z}$ die Notation
+fuer $\hat{s}(t)$ gerade gilt $t = nT_a: n \in \mathbf{Z}$ die Notation
 $\hat{s}[n]$. Dann ist also $\hat{s}[n] = \hat{s}(nT_a)$.
 
-#### Rekonstruktion
+\paragraph{ Rekonstruktion}
 
 Haben wir erst einmal die Abtastwerte, so ist es unter Umstaenden moeglich, das
 urspruengliche Signal wiederherzustellen -- also zu rekonstruieren. Hierbei sagt
@@ -278,7 +278,7 @@ Nyquist Theorem), dass wenn unser Signal auf eine Bandbreite $B$ begrenzt, ist
 sodass alle Frequenzen $f$ der Sinus- und Kosninuskomponenenten kleiner gleich
 $B$ sind, erst eine Abtastrate
 
-$$f_a \geq 2B$$
+$f_a \geq 2B$
 
 eine korrekte Rekonstruktion ermoeglicht. Die Abtastrate muss also groesser als
 die groesste vorkommende Frequenz im Signal sein. Analog kann man sagen, dass
@@ -321,7 +321,7 @@ muessen, wurden sich genau bei $f_{max}$ der positive Teil des Spektrums mit dem
 negativen Teil des ersten nach rechts verschobenen Segments ueberlappen, und die
 Amplitude waere verdoppelt.
 
-#### Quantisierung
+\paragraph{ Quantisierung}
 
 Unter *Quantisierung* versteht man die Diskretisierung des urspruenglich
 kontiniuerlichen Wertebreichs eines Signals. Betrachtet man beispielsweise das
@@ -360,7 +360,7 @@ hoehere, weil es sich auf Grund der Eigenheiten des menschlichen Hoerspektrums
 lohnt, fuer niedrigere Frequenzen eine hoehre Aufloesung zu haben. Bestimmte
 Wertebereiche haben also mehr Quantisierungstufen als andere.
 
-## Uebertragungskanal
+\subsection{ Uebertragungskanal}
 
 In der realen Welt wird ein Signal nicht unbeeinflusst von $A$ nach $B$
 gesendet. Es kommen noch Stoerfaktoren hinzu, zum Beispiel:
@@ -377,7 +377,7 @@ Wir betrachten hierfuer ein vereinfachtes Uebetragungsmodell:
 
 Hierbei ist $n$ eine Stoerquelle (eigentlich $\eta$).
 
-### Kanalkapazitaet
+\subsubsection{ Kanalkapazitaet}
 
 Wir nehmen an, dass ein Kanal wie ein Tiefpassfilter wirkt. Das heisst,
 Frequenzen ab einer bestimmten Threshold/Cutoff Frequenz $f_0$ werden
@@ -394,10 +394,10 @@ Filter ist perfekt. Dann werden also alle Frequenzen $f$ mit $|f| < B$
 durchgelassen, und alle Frequenzen $|f| \geq B$ werden vollstaendig gesperrt,
 erhalten also eine Amplitude von Null.
 
-https://en.wikipedia.org/wiki/Bandwidth_(computing)
+https://en.wikipedia.org/wiki/Bandwidth\_(computing)
 https://en.wikipedia.org/wiki/Goodput
 
-#### Rauschfreier, Binaerer Kanal
+\paragraph{ Rauschfreier, Binaerer Kanal}
 
 Das Nyquist Theorem sagt uns, dass wir fuer ein auf $B$ bandbegrenztes Signal
 eine minimale Abtastfrequenz von $2B$ brauchen. Das bedeutet aber auch, dass
@@ -416,12 +416,12 @@ Sinus- als auch Kosinusanteils des Signals zu erfassen, da das Signal ja eine
 Mischung aus beiden sein kann.
 
 Deswegen gibt uns die Nyquist Rate $f_N = 2B$ zwei Informationen ueber einen
-__binaeren__ Kanal:
+\_\_binaeren\_\_ Kanal:
 
 * Die minimale Abtastfrequenz, um das Signal korrekt zu rekonstruieren.
 * Die maximale Anzahl an unterscheidbaren und unabhaengigen Signalwerten.
 
-#### Rauschfreier, $M$-aerer Kanal
+\paragraph{ Rauschfreier, $M$-aerer Kanal}
 
 Wir nehmen nun an, dass unsere Quelle mehr als nur zwei Symbole emittieren kann,
 naemlich $M = 2^N$ viele. Dann gilt, dass die Kanalkapazitaet des Kanals gleich
@@ -430,7 +430,7 @@ aber, dass die Entropie einer Quelle maximal $\log(M) = N$ ist. Somit sagt uns
 *Hartley's Gesetz*, dass die maximale Kanalkapazitaet, also die maximale Anzahl
 an Symbolen die wir in einem Zeitintervall senden koennen, gleich
 
-$$C_H = f_N\log(M)$$
+$C_H = f_N\log(M)$
 
 ist. Wir wollen dies intuitiv verstehen. Wir wissen, dass wir bei einem binaeren
 Kanal maximal $f_N = 2B$ Symbole ueber einen auf $B$ bandbegrenzten Kanal senden
@@ -460,7 +460,7 @@ Nun zwei weitere Beobachtungen:
 2. Wenn $M = 2$ funktioniert Hartey's Gesetz natuerlich auch: $C_H f_N\log(2) =
    f_N \cdot 1 = f_N$, wie oben beschrieben.
 
-### Rauschen
+\subsubsection{ Rauschen}
 
 Rauschen tritt auf, wenn das Signal durch externe Stoereinfluesse
 beeintraechtigt wird. Rauschen macht insbesondere unserer Quantisierung das
@@ -472,8 +472,8 @@ maximale Hamming Distanz von 1 haben (unterscheiden sich in maximal einem Bit).
 
 Wir betrachten hierbei das sogenannte *Signal to Noise Ratio* (SNR):
 
-$$\SNR = \frac{\text{Signalleistung}}{\text{Rauschleistung}} =
-\frac{P_S}{P_N} .$$
+$SNR = \frac{\text{Signalleistung}}{\text{Rauschleistung}} =
+\frac{P_S}{P_N} .$
 
 Das SNR wird dabei in Dezibel (dB) angegeben. Ein Bel ist dabei der
 Zehner-Logarithmus eines Verhaeltnisses von Leistungen. Hat man also zwei
@@ -485,25 +485,25 @@ Bel. Also gilt dann, dass das SNR in Bel definiert ist durch: $10 \cdot
 \log_{10}(P_S/P_N)$. Ist das SNR nun klein, ist das schlecht. Ist es gross, ist
 das gut.
 
-#### Beispiel
+\paragraph{ Beispiel}
 
 Sei die Signalleistung $P_S = 1 \text{ mW}$ und die Rauschleistung $P_N = 0.5
 \text{ mW}$. Dann ist das SNR gleich
 
-$$10 \cdot \log_{10}(1/0.5) \approx 0.3 .$$
+$10 \cdot \log_{10}(1/0.5) \approx 0.3 .$
 
-#### Shannon-Hartley Theorem
+\paragraph{ Shannon-Hartley Theorem}
 
-Wenn wir nun das $\SNR$ wissen, gibt uns das Shannon-Hartley Theorem die
+Wenn wir nun das SNR wissen, gibt uns das Shannon-Hartley Theorem die
 maximale Kanalkapazitaet $C_S$ eines rauschbehafteten, $M$-aeren Kanals durch:
 
-$$C_S = B \log_2(1 + \SNR) = B \log_2(1 + \frac{P_S}{P_N}) .$$
+$C_S = B \log_2(1 + SNR) = B \log_2(1 + \frac{P_S}{P_N})$
 
-Hierbei ist das $\SNR$ nicht in Dezibel gemessen, sondern einfach das
+Hierbei ist das $SNR$ nicht in Dezibel gemessen, sondern einfach das
 Verhaeltnis. Das $+ 1$ im Logarithmus ist die Varianz bzw. Leistung des
 Rauscheinflusses $\eta$.
 
-### Schranken der Kanalkapazitaet
+\subsubsection{ Schranken der Kanalkapazitaet}
 
 Die Kapazitaet $C$ eines Kanals ist also durch zwei Faktoren beschraenkt:
 
@@ -518,7 +518,7 @@ Die Kapazitaet $C$ eines Kanals ist also durch zwei Faktoren beschraenkt:
 
 Deswegen gilt, fuer die Kanalkapazitaet:
 
-$$C < \min(C_H, C_S) = \min(2B\log(M), B\log(1 + SNR)) \text{ bit}$$
+$C < \min(C_H, C_S) = \min(2B\log(M), B\log(1 + SNR)) \text{ bit}$
 
 Das Hartley Theorem mit $C_H$ begrenzt hierbei die Kanalkapazitaet anhand der
 Bandbreite des Kanals, sowie insbesondere anhand der Anzahl an Signalstufen. Das
@@ -526,9 +526,9 @@ Shannon-Hartley Theorem begrenzt den Kanal dann anhand des Rauscheinflusses,
 sowie wiederum der Bandbreite des Kanals. Zusammen ergeben sie also die obere
 Schranke.
 
-## Nachrichtenuebertragung
+\subsection{ Nachrichtenuebertragung}
 
-### Quellenkodierung
+\subsubsection{ Quellenkodierung}
 
 *Quellenkodierung* (*Source Coding*) ist der erste Schritt in unserem Modell der
 Datenuebertragung. Das Ziel der Quellenkodierung ist es, Redundanz aus den zu
@@ -541,7 +541,7 @@ Quellenkodierung passiert meist auf hoeheren Schichten, beispielsweise schon in
 der Darstellungsschicht (6). Hierbei koennte man Daten zum Beispiel durch das
 ZIP Dateiformat komprimieren.
 
-### Kanalkodierung
+\subsubsection{ Kanalkodierung}
 
 Die Kanalkodierung folgt nach der Quellenkodierung. Daten werden in der realen
 Welt nicht ohne Fehler uebertragen. Das *Ziel der Kanalkodierung ist es nun, den
@@ -555,7 +555,7 @@ Wahrscheinlichkeit ist, dass ein gegebener, uebertragener Bit falsch sein wird.
 * Bei Ethernet ueber Kupferkabel meist: $p_e \approx 10^{-8}$
 * Bei WLAN charakteristisch: $p_e \approx 10^{-6}$
 
-#### Blockcodes
+\paragraph{ Blockcodes}
 
 Blockcodes sind eine Methode zur Fehlerbehandlung bei der
 Datenuebertragung. Hierbei wird der Datenstrom (Bitfolge) in Sequenzen der
@@ -564,7 +564,7 @@ die uebrigen $n - k$ Bits zur Fehlererkennung und Rekonstruktion verwendet. Die
 Coderate $R = \frac{k}{n}$ gibt dabei an, wieviel unsere Daten vom gesamten
 Blockcode ausmachen.
 
-##### Repetition Codes
+\paragraph{ Repetition Codes}
 
 Als Beispiel koennten wir jeden Bit, also jedes Wort der Laenge $k = 1$, auf
 einen Blockcode der Laenge $n = 3$ abbilden, indem wir den einen Bit noch zwei
@@ -580,7 +580,7 @@ Repetition Codes nicht sehr effizient ist. Die Datenrate wuerde naemlich
 gedrittelt werden. Interessant ist aber, dass man durch Repetition Codes Fehler
 nicht nur erkennen, sondern sogar korrigieren kann.
 
-##### 4B5B
+\paragraph{ 4B5B}
 
 Ein beliebter Blockcode ist der 4B5B Code, wobei alle 4 Bits auf ein neues
 Datenwort mit 5 Bits abgebildet werden. Somit hat man also wiederum 4 Bits frei,
@@ -601,13 +601,13 @@ Bitfehlern. Korrigieren koennte man Fehler nicht, weil man nicht weiss, wieviele
 Bits genau umgekippt sind (da jede ungerade Anzahl an Fehlerbits die selbe
 Paritaet ergibt).
 
-#### Praxis
+\paragraph{ Praxis}
 
 In der Praxis ist am anderen Ende einer Leitung oft eine Einheit, die die
 Coderate der Kanalkodierung je nach geschaetzer Bitfehlrewahrscheinlichkeit
 anpasst.
 
-## Impulsformung
+\subsection{ Impulsformung}
 
 Bei der *(Basisband-)Impulsformung* geht es darum, aus einem Datenstrom ein
 analoges *Basisbandsignal* zu generieren. Das Basisbandsignal ist dabei jenes
@@ -616,7 +616,7 @@ moduliert wird, um letztendlich abgesandt zu werden. Hierbei sendet man in
 regelmaessigen Abstaenden gewichtete Sendegrundimpulse. Ein solcher Impuls
 stellt dabei jeweils einen Bit oder eine Gruppe von Bits dar.
 
-### Hintergrund
+\subsubsection{ Hintergrund}
 
 Im Weiteren wird die *Leitungskodierung* dafuer zustaendig sein, zu beschreiben,
 wie Bitstroeme durch solche gewichteten Grundimpulse kodiert werden. Da, wie wir
@@ -628,7 +628,7 @@ Traegerwelle *moduliert* werden, sodass die Codes mit begrenzter Bandbreite
 uebertragen werden koennen. Damit beschaeftigt sich folglich die *Modulation*,
 welche weiter unten behandelt wird.
 
-### Grundimpulse
+\subsubsection{ Grundimpulse}
 
 Es gibt hierbei verschieden Arten von Grundimpulsen, welche jeweils ueber einem
 Zeitraum von $-T/2$ bis $+T/2$ definiert sind:
@@ -645,7 +645,7 @@ Zeitraum von $-T/2$ bis $+T/2$ definiert sind:
 * Letztlich ist der $\cos^2$ Impuls auch eine Variante, welcher also gleich der
   quadierten Kosinusfunktion in diesem Intervall ist.
 
-### Leitungscodes
+\subsubsection{ Leitungscodes}
 
 *Leitungscodes* bestimmen dabei eine Abfolge solcher Grundimpulse und gewichten sie entsprechend den Daten (z.B. $\pm 1$). Im Kontext von Leitungscodes sprechen wir bei einem Symbol dann nicht notwendigerweise von einem Datum, sondern einfach von einer *physikalisch messbaren Veranderung des Zeitsignals*. Somit bestehen bestimmte Grundimpulse (Bits) also manchmal aus mehr als nur einem Symbol. Beispielsweise der RZ Impuls, welcher zwei Veraenderungen im Signal hat, besteht also aus zwei Symbolen, obwohl er nur einen Bit kodiert. Die Bedeutung des Wortes *Symbol* ist also gewissermassen ueberladen.
 
@@ -661,7 +661,7 @@ Eine weitere, moegliche Eigenschaft ist *Gleichstromfreiheit*. Ist ein Leitungsc
 
 Letztlich ist die Bandbreite des Leitungscodes noch relevant, falls wir mehrere Signale gleichzeitig ueber denselben Kanal senden wollen (Frequency Division Multiplex).
 
-#### Non-Return-To-Zero (NRZ)
+\paragraph{ Non-Return-To-Zero (NRZ)}
 
 Bei dieser Kodierung ist der Grundimpuls der einfache Rechtecksimpuls $\rect(t)$ mit Periodendauer $T$. Die Gewichte fuer den Grundimpuls sind dabei entweder $+1$ oder $-1$. $+1$ wird gewaehlt, wenn der zu sendende Bit gleich $1$ ist. Wenn der Bit $0$ ist, wird der Grundimpuls durch ein Gewicht von $-1$ eben negiert bzw. invertiert. Somit ist das Sendesignal dann definiert durch $s(t) = \sum_{n=0}^\infty d_n \rect(t - nT)$.
 
@@ -685,7 +685,7 @@ Die Eigenschaften dieses NRZ Codes sind:
 * Keine Gleichstromfreiheit
 * Relativ breites Frequenzpektrum (brauchen mehr Bandbreite).
 
-#### Return-To-Zero (RZ)
+\paragraph{ Return-To-Zero (RZ)}
 
 Bei *Return-To-Zero* wird der entsprechende Return-To-Zero Impuls $\rz(t)$
 mit Periodendauer $T$ verwendet. Dieser ist fuer das halbe Intervall $[-T/2, 0]$
@@ -693,7 +693,7 @@ gleich eins und fuer die andere Haelfte $[0, T/2[$ gleich Null. Die Gewichte sin
 bei NRZ gerade $d = +1$ fuer einen gesetzten Datenbit und $d = -1$ fuer einen
 geloeschten Datenbit. Das Signal ergibt sich somit durch:
 
-$$s(t) = \sum_{n=0}^\infty d_n \rz(t - nT)$$.
+$s(t) = \sum_{n=0}^\infty d_n \rz(t - nT)$.
 
 ```
          s(t)
@@ -714,13 +714,13 @@ Eigenschaften von RZ:
 * Keine Gleichstromfreiheit (wenn nur 1-en, dann Gleichanteil 0.5)
 * Breiteres Spektrum als NRZ (abruptere Spruenge?)
 
-#### Manchester Code
+\paragraph{ Manchester Code}
 
 Der *Manchester*-Code besteht aus Manchester-Impulsen, welche um die halbe
 Amplitude nach unten verschobene, skalierte RZ-Impulse sind. Die Gewichtung ist
 wie bei RZ und NRZ, also ergibt sich das Signal durch:
 
-$$s(t) = \sum_{n = 0}^\infty d_n \cdot \{manc(t - nT).$$
+$s(t) = \sum_{n = 0}^\infty d_n \cdot \{manc(t - nT).$
 
 ```
          s(t)
@@ -746,13 +746,13 @@ Seine Eigenschaften sind:
 * Gleichstromfreiheit! Fuer jede Signalaenderung gibt es naemlich auch die inverse Signalaenderung. Somit ist jeder Impuls null-zentriert und es kann nie ein Offset entstehen.
 * Sehr breites und langsam abklingendes Spektrum
 
-#### Multi-Level-Transmit 3 (MLT 3)
+\paragraph{ Multi-Level-Transmit 3 (MLT 3)}
 
 Bei Multi-Level Transmit verwenden wir weider den Rechtecksimpuls und definieren
 unser Signal durch $s(t) = \sum_{n=0}^\infty d_n \cdot \rect(t -
-nT). Besonders ist jedoch, wie wir die Gewichte definieren:
+nT)$. Besonders ist jedoch, wie wir die Gewichte definieren:
 
-$$d_n = \sin\left(\frac{\pi}{2}\sum_{k=0}^n b_k\right)$$
+$d_n = \sin\left(\frac{\pi}{2}\sum_{k=0}^n b_k\right)$
 
 Fuer das $n$-te Gewichte betrachten bzw. summieren wir also alle vorherigen Bits, und gehen genau so viele Schritte jeweils um $\pi/2$ weiter. Fuer jeden neuen Bit wird die Summe um eines groesser und die Funktion geht $\pi/2$ (90 Grad) weiter. Was also passiert, ist dass wir durch die Stufen $0, \pi/2, \pi, 3\pi/2$ fuer jeden neuen gesetzten Bit quasi *durchrotieren*. Jedes Mal, wenn wir also einen neuen gesetzten Bit senden, geht unser Gewicht um $\pi/2$ Schritte weiter. D.h., dass die Gewichte also durch die Werte $\sin(0) = 0, \sin(\pi/2) = 1, \sin(\pi) = 0, \sin(3\pi/2) = -1$ gehen. Das 3 in MLT 3 kommt also davon, dass wir drei verschiedene Stufen $+1, 0, -1$ haben.
 
@@ -781,7 +781,7 @@ Eigenschaften:
 * *Schmales Spektrum*, da das Signal durch den periodischen Verlauf eine
   reduzierte Grundperiode hat.
 
-### Kodierung zusaetzlicher Informationen
+\subsubsection{ Kodierung zusaetzlicher Informationen}
 
 Woher wissen wir nun aber, ob auf unserem Medium wirklich Daten vorliegen, oder
 ob gerade einfach nichts gesendet wird? Auch fragen wir uns, wie wir denn
@@ -789,7 +789,7 @@ ueberhaupt den Start und das Ende einer Nachricht festlegen koennen. Wir
 brauchen also irgendeine Art von Kodierung, die uns gerade das erlaubt. Hierfuer
 gibt es zwei Moeglichkeiten: *Coderegelverletzungen* oder *Steuerzeichen*.
 
-#### Coderegelverletzung
+\paragraph{ Coderegelverletzung}
 
 Fuer diese Moeglichkeit nutzen wir die Tatsache aus, dass manche der
 Leitungskodierungsverfahren strenge Regeln fuer die moeglichen Werte der
@@ -809,13 +809,13 @@ Dieses Verfahren, die Regeln zu verletzen, indem man zu Null zurueckkehrt, funkt
 
 Diese Methode wird bei 10 Mbit/s Ethernet verwendet.
 
-#### Steuerzeichen
+\paragraph{ Steuerzeichen}
 
 Die zweite Moeglichkeit ist es, einen speziellen Blockcode zu definieren, sodass fuer jeden uebertragenen Block ein Teil der Bits fuer Kontrollinformationen uebrig bleibt (siehe Sektion zu Blockcodes). Bei der Kanalkodierung dienten Blockcodes dazu, Fehler erkennen und sogar korrigieren zu koennen. In diesem Fall nutzen wir sie aber, um eben Steuerzeichen zu senden. Bleiben noch Codewoerter oder sogar Bits uebrig, so koennen diese dann natuerlich noch zur Fehlererkennung dienen.
 
 Ein Beispiel ist wieder der 4B5B Code, welcher von 100 MBit/s FastEthernet verwendet wird. Die 16 moeglichen Codewoerter (wenn der erste Bit gesetzt ist) koennen fuer Start/Stop oder Idle (End of Transmission) Signale genutzt werden. Auch werden manchmal 8B10B Codes verwendet, wo wogar 768 Kontrollcodewoerter moeglich sind.
 
-## Modulation
+\subsection{ Modulation}
 
 Die bisher besprochenen Basisbandsignale sind alle sehr abrupt und ecking, was
 auf sehr viele hohe Harmonische hindeutet. Genauer hat ein Rechtecksimpuls
@@ -849,18 +849,18 @@ Im Frequenzbereich passiert folgendes:
 
 Das Traegersignal besteht hierbei nur aus einer einzigen Grundharmonischen mit Frequenz $f_0$. Somit hat die Traegerwelle an sich eine winzig kleine Bandbreite (im Prinzip keine). Durch die Multiplikation dieses Traegersignals (diesem einen Sinus-Term) mit dem bandbegrenzten Datensignal $s_T(t)$ entsteht dann das modulierte Signal $s(t)$. Die Bandbreite dieses modulierten Signals ist dann gerade $f_{max}$, zentriert um $f_0$. D.h. die Tiefpassfilterung des Basisbandsignals bestimmt die letztendliche Bandbreite des Signals, das wir uebertragen. Das Traegersignal bestimmt nur, wo wir das modulierte Signal im Frequenzspektrum platzieren.
 
-#### 4-ASK
+\paragraph{ 4-ASK}
 
 Eine Variante der Amplitudenmodulation nennt sich *4-ASK* (*Amplitude Shift
 Keying*). Hierbei kann das modulierte Signal (Bandpassignal) gerade *vier*
 diskrete Stufen annehmen. Wir koennen also mit einem Symbol (einer
 Signalaenderung) zwei Bits (aus einem Leitungscode) senden.
 
-Ein Beispiel: Wir waehlen unsere vier Signalstufen mit $\mathbb{S} = \{-3/2, -1/2, +1/2, +3/2\}$. Dann bilden wir je zwei Datenbits aus unserem Datenstrom auf ein Symbol (eine Signalstufe) ab: $00 \mapsto -3/2, 01 \mapsto -1/2, 10 \mapsto +1/2, 11 \mapsto +3/2$. Wir wuerden also je zwei Bit aus einem einkommenden Leitungscode interpretieren und dann in einen Grundimpuls fuer unser neues Basisbandsignal (fuer die Modulation) mit entsprechender Gewichtung aus $\mathbb{S}$ transformieren. Das so entstehende Signal kann dann einfach mit dem Traegersignal multipliziert werden, um das modulierte Signal zu erzeugen, welches letztendlich uebertragen werden kann. Jedes Mal, wenn sich ein Gewicht eines Grundimpulses fuer das Basisbandisignal veraendert, wuerde sich auch die Amplitude des Traegersignals entsprechend der Abbildung veraendern.
+Ein Beispiel: Wir waehlen unsere vier Signalstufen mit $\mathbf{S} = \{-3/2, -1/2, +1/2, +3/2\}$. Dann bilden wir je zwei Datenbits aus unserem Datenstrom auf ein Symbol (eine Signalstufe) ab: $00 \mapsto -3/2, 01 \mapsto -1/2, 10 \mapsto +1/2, 11 \mapsto +3/2$. Wir wuerden also je zwei Bit aus einem einkommenden Leitungscode interpretieren und dann in einen Grundimpuls fuer unser neues Basisbandsignal (fuer die Modulation) mit entsprechender Gewichtung aus $\mathbf{S}$ transformieren. Das so entstehende Signal kann dann einfach mit dem Traegersignal multipliziert werden, um das modulierte Signal zu erzeugen, welches letztendlich uebertragen werden kann. Jedes Mal, wenn sich ein Gewicht eines Grundimpulses fuer das Basisbandisignal veraendert, wuerde sich auch die Amplitude des Traegersignals entsprechend der Abbildung veraendern.
 
 Es gibt auch andere Varianten von ASK, wobei $n$-ASK also meint, dass es $n$ verschiedene Signalstufen gibt. $n$ waere hier wohl immer eine Zweierpotenz.
 
-#### QAM
+\paragraph{ QAM}
 
 Quadratur-Amplituden-Modulation (QAM) ist eine Modulationstechnik, die
 ausnutzt, dass Sinus- und Kosinusschwingungen von einander unabhhaengig sind, da
@@ -872,11 +872,11 @@ es uns moeglich, die Datenuebertragungsrate zu verdoppeln! Wir koennen naemlich
 mit den Sinusanteilen $M$ Bits kodieren und mit den Kosinusanteilen noch einmal
 $M$ Bits. Dieses Konzept ist aehnlich FDM, nur dass wir hier auf quasi auf
 verschiedenen Phasen uebertragen und nicht auf verschiedenen Frequenzen. Der
-__Kosinusanteil des Signals wird dabei als *Inphase-Anteil* bezeichnet, der
+\_\_Kosinusanteil des Signals wird dabei als *Inphase-Anteil* bezeichnet, der
 Sinusanteil als *Quadratur-Anteil*:
 
-* __Kosinus: Inphase__
-* __Sinus: Quadratur__
+* \_\_Kosinus: Inphase\_\_
+* \_\_Sinus: Quadratur\_\_
 
 Ein konkretes Beispiel von QAM waere 16-QAM, wo zwei Bit durch Sinus und zwei
 durch Kosinus uebertragen werden. Insgesamt hat man also vier Bit und so 16
@@ -884,7 +884,7 @@ verschiedene Signalstufen pro uebertragenem Symbol.
 
 Wenn wir die Sinus- und Kosinusanteile nun also separat betrachten, dann koennten wir meinen, wir koennen nun mehr als $2B$, naemlich $2 \cdot 2B$ viele unterscheidbare, unabhaengige Werte uebertragen. Wir haetten also Nyquist mit seiner Nyquist Rate $f_N$ widerlegt. Das ist aber nicht der Fall. Es stellt sich naemlich heraus, dass sich durch QAM die Bandbreite verdoppelt. Die Datenrate, also die Kanalkapazitaet, ist im Vergleich zu 4-ASK verdoppelt, da die Datenrate ja neben der Bandbreite noch von den moeglichen Symbolen (Signalstufen) $M$ abhaengt ($C_H = 2B\log(M)$), welche bei QAM eben mehr sind. Aber gleichzeitig verbrauchen wir aber auch doppelt so viel Platz im Frequenzspektrum, sodass wir eben nicht mehr Signale bzw. mehr Daten uebertragen koennen, da wir noch immer durch die Bandbreite $B$ des Kanals beschraenkt sind. D.h. ja, die Datenrate verdoppelt sich, aber nein, wir koennen nicht mehr Daten uebertragen.
 
-#### PSK
+\paragraph{ PSK}
 
 Eine weitere Modulationsvariante, *Phase Shift Keying* (PSK), veraendert nicht
 die Amplitude des Signal, sondern die *Phase*. Das Prinzip ist dem ASK sehr
@@ -898,7 +898,7 @@ aehnlich. Bei 4-PSK gaebe es drei verschiedene Signalstufen:
 PSK ist wie FM Modulation robust gegenueber Stoerungen in der Amplitude des
 Signals, da diese die Phase (wie die Frequenz) nicht veraendern.
 
-## Uebertragungsmedien
+\subsection{ Uebertragungsmedien}
 
 Wir haben nun besprochen, wie Daten kodiert und moduliert werden. Jetzt fehlt
 es nur noch zu erfahren, wie diese Daten letztendlich eigentlich physisch
@@ -914,15 +914,14 @@ Uebertragung. Sowie dann noch zwischen:
 
 Wellen. Elektromagnetische Wellen werden wir als erstes unter die Lupe nehmen.
 
-### Elektromagnetische Wellen
+\subsubsection{ Elektromagnetische Wellen}
 
 Elektromagnetische (EM) Wellen bestehen aus einer *elektrischen* Komponente
 $\vec{E}$ und einer *magnetischen* Komponente $\vec{B}$. Diese sind jeweils
 orthogonal zueinander sowie zur Ubertragungsrichtung. EM Wellen haben dabei
 folgende Eigenschaften:
 
-* __Im Vakuum__ breiten sie sich mit Lichtgeschwindigkeit $c \approx 3 \cdot 10^8
-  \text{ m/s}$ aus.
+* \_\_Im Vakuum\_\_ breiten sie sich mit Lichtgeschwindigkeit $c \approx 3 \cdot 10^8 \text{ m/s}$ aus.
 * Im Gegensatz zu Schallwellen brauchen sie kein Medium (propagieren auch im
   Vakuum).
 * Innerhalb eines Mediums (z.B. Leiter, Luft, Waende) ist die
@@ -936,7 +935,7 @@ folgende Eigenschaften:
 
 Das elektromagnetische Spektrum beschreibt dabei den Wertebereich, den elektromagnetische Wellen ueblicherweise annehmen. Wir betrachten darin Frequenzen zwischen ungefaehr zwischen $10^2$ (Wechselstrom) und $10^{23}$ (Hoehenstrahlung). Fuer Datenuebertragung interessiert uns jedoch hauptsaechlich der Bereich zwischen MHz ($10^6$) und einigen Gigahertz ($10^9$).
 
-### Koaxialkabel
+\subsubsection{ Koaxialkabel}
 
 Koaxialkabel sind eine bestimmte Art von Kabel, welche unter Anderem fuer
 Ethernet 802.3a mit 10 MBit/s verwendet werden. Hierbei wird meist ein langer
@@ -949,7 +948,7 @@ Solche Kabel bestehen aus vier Schichten: einem Inneleiter (auch *Seele*
 genannt), einem Isolator, einem Aussenleiter und letztlich einem auesseren
 Mantel.
 
-### Twisted-Pair Kabel
+\subsubsection{ Twisted-Pair Kabel}
 
 *Twisted-Pair* Kabel werden fuer viele heutige Netwerkanwendungen benoetigt,
  beispielsweise den meisten Ethernet Standards. Hierbei besteht ein Kabel aus
@@ -1001,7 +1000,7 @@ duerfen, sowie die *Cross-Over* (vollduplex) Kabel, welche auch gleiche Geraete 
 Router, Hub und Switch) verbinden koennen. Das hat damit zu tun, auf welchen
 Pins (Adern) diese Geraete senden und auf welchen sie empfangen.
 
-### Optische Leiter
+\subsubsection{ Optische Leiter}
 
 In *optischen Leitern* werden nicht elektromagnetische Wellen, sondern Licht
 uebertragen. Ein solcher Leiter besteht dabei aus einem *Kern*, in welchem das

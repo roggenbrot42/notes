@@ -1,6 +1,22 @@
-# Einführung
+\documentclass[a4paper,11pt]{scrartcl}
+\usepackage{amsmath}
 
-## ISO/OSI Modell
+\let\bb\mathbf
+\newcommand{\SNR}{\mathop{SNR}}
+\newcommand{\nrz}{\mathop{nrz}}
+\newcommand{\rz}{\mathop{rz}}
+\newcommand{\manc}{\mathop{manc}}
+\newcommand{\rect}{\mathop{rect}}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+
+
+\section{Einführung}
+
+\subsection{ISO/OSI Modell}
 
 Das ISO/OSI Modell bezeichnet das *Open Systems Interconnect* (OSI) Modell der
 *International Standardization Organization* (ISO). Es unterteilt den
@@ -31,7 +47,7 @@ beispielsweise nicht alle Dienste nur einer Schicht zuordnen, sondern oft
 mehreren. Auch widerspricht die Anordnung der Schichten oft anderen Interessen,
 beispielsweise der Effizienz der Übertragung.
 
-## Vertikale Kommunikation
+\subsubsection{ Vertikale Kommunikation}
 
 Es gibt nun ein Modell für die verschiedenen Bausteine, die Schichten bei der
 vertikalen Kommunikation untereinander austauschen. Wir betrachten hierzu die
@@ -62,3 +78,13 @@ Es gibt für die PDU auf manchen Schichten spezielle Namen:
 * Transportschicht (4): Segment (TCP), Datagramm (UDP)
 * Vermittlungsschicht (3): Paket
 * Sicherungsschicht (2): Rahmen
+
+\input{layer-1.tex}
+\input{layer-2.tex}
+\input{layer-3.tex}
+%\input{layer-4.tex}
+%\input{layer-5.tex}
+%\input{layer-6.tex}
+%\input{layer-7.tex}
+
+\end{document}

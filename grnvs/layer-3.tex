@@ -1,10 +1,10 @@
-# OSI Modell: Layer 3
+\section{OSI Modell: Layer 3} 
 
 Auf Schicht 3, der *Vermittlungsschicht* bzw. dem *Network Layer*, beschaeftigen
 wir uns nun schon mehr mit se Interwebs. Wir betrachten zunaechst
 Vermittlungsarten, dann Adressierung im Internet und letztlich Routing.
 
-## Vermittlungsarten
+\subsection{Vermittlungsarten} 
 
 Es gibt drei verschiedene Moeglichkeiten, Daten von $A$ nach $B$ zu senden:
 
@@ -26,7 +26,7 @@ darstellen. Dabei uebertragen wir immer eine Nachricht mit $L$ Bits ueber eine
 Gesamtdauer ($s \rightarrow t$) von $T$. Die Knoten $s$ und $t$ liegen dabei $d$
 Meter auseinander und alle Knoten sind aequidistant plaziert.
 
-### Leitungsvermittlung
+\subsubsection{Leitungsvermittlung} 
 
 Bei der Leitungsvermittlung reservieren wir einen exklusiven Kanal von $s$ nach
 $t$. Die Uebertragung besteht dabei aus drei Phasen:
@@ -84,7 +84,7 @@ Analogie: Wir wollen ein Haus von Berlin nach Wien senden. Dafuer reservieren
 wir die ganze Autobahn von Berlin nach Wien und senden unser Haus, Stein fuer
 Stein, ueber diese Autobahn.
 
-### Nachrichtenvermittlung
+\subsubsection{Nachrichtenvermittlung} 
 
 Bei der Nachrichtenvermittlung wird zwischen Sender und Empfaenger kein
 exklusiver Kanal mehr allokiert. Stattdessen muss jede einzelne Nachricht von
@@ -146,9 +146,9 @@ Nachteile von Nachrichtenvermittlung sind:
   gepuffert werden.
 * Sind die Puffer der Vermittlungsknoten in ihrer Kapazitaet beschraenkt,
   koennen Nachrichten so verloren gehen.
-* Die __ganze Nachricht__ muss $n + 1$ mal serialisiert werden!!!!!!!
+* Die \_\_ganze Nachricht\_\_ muss $n + 1$ mal serialisiert werden!!!!!!!
 
-### Paketvermittlung
+\subsubsection{Paketvermittlung} 
 
 Bei der Nachrichtenvermittlung ist das groesste Problem, dass wir die *gesamte*
 Nachricht bei jedem Knoten neu serialisieren muessen. Diesem Problem koennen wir
@@ -206,7 +206,7 @@ Die Nachteile von Paketvermittlung gegenueber anderen Verfahren sind:
 Paketvermittlung wird in den meisten modernen Datennetzen und insbesondere durch
 das Internet Protokoll (IP) verwendet.
 
-## Adressierung im Internet
+\subsection{Adressierung im Internet} 
 
 Die Sicherungsschicht bietet uns Moeglichkeiten, Knoten direkt zu
 adressieren. Das geht natuerlich nur, wenn Knoten auch direkt verbunden
@@ -247,7 +247,7 @@ die Organisation von Rechnern weltweit viel einfacher macht. Auch sei angemerkt,
 dass es sehr einfach ist, seine MAC Adresse zu verfaelschen, sodass sie nicht
 mehr global eindeutig ist.
 
-### IPv4
+\subsubsection{IPv4} 
 
 Bei IPv4 geben wir jedem Host auf der Welt eine eindeutige *IP-Adresse*. Eine
 *IP-Adresse* ist dabei eine 32-Bit lange Zahl, die aus 4 Bytes (genauer:
@@ -275,7 +275,7 @@ die Payload eines Schicht 2 Pakets, z.B. einem Ethernet Paket.
 
 Wir wollen einen solchen IP-Header naeher untersuchen.
 
-#### IP-Header
+\paragraph{IP-Header} 
 
 IP-Header haben eine minimale Laenge von *20 Byte*. Sie enthalten neben Quell- und
 Ziel-IP-Adresse noch viele weitere Informationen:
@@ -354,7 +354,7 @@ oder fuer eigene Zwecke genutzt. Kriegt der Bit dann ploetzlich eine Bedeutung,
 ist es schlecht, wenn der Bit bei manchen eben schon (unwissentlich) gesetzt
 wird.
 
-#### Adressaufloesung
+\paragraph{Adressaufloesung} 
 
 Stellen wir uns vor, wir wissen die IP-Adresse eines Hosts. Damit kommen wir
 selbst noch nicht sehr weit. Liegt der Zielhost im selben Netzwerk brauchen wir
@@ -371,7 +371,7 @@ Subnetzmaske bekannt). Daher muessen wir also nur pruefen, ob der Netzwerkteil
 der Ziel-IP-Adresse gleich dem Netzwerkteil unserer eigenen IP-Adresse ist. Je
 nach Resultat, gehen wir anders vor.
 
-##### Selbes Netzwerk
+\paragraph{Selbes Netzwerk} 
 
 Im ersten Fall, wo Quell- und Zielhost also im selben Direktnetzwerk liegen,
 muessen wir von der IP-Adresse ausgehend nun irgendwie die MAC-Adresse des Ziels
@@ -423,7 +423,7 @@ Header auf Null gestellt) an den Absender zurueckgeschickt.
 Das sieht dann beispielsweise so aus:
 
 Request: "Who has 192.168.1.2? Tell 192.168.1.1"
-Reply: "192.168.1.2 is at __04:0c:ce:e2:c8:2e__".
+Reply: "192.168.1.2 is at \_\_04:0c:ce:e2:c8:2e\_\_".
 
 So weiss der Quellhost nun also, wohin er sein Paket im lokalen Netzwerk senden
 muss. Er wird diesen Eintrag dann natuerlich auch noch fuer einige Zeit (5 - 10
@@ -435,9 +435,9 @@ der Name des Interfaces des Zielhosts, fuer welches diese IP Adresse steht. Auch
 wird versucht, den Domain Name des Zielhosts zu speichern. Komplett waere ein
 ARP-Cache Eintrag also:
 
-```
+\begin{verbatim}
 [domain name] <ip> at <mac> [on <interface>]
-```
+\end{verbatim}
 
 Der Zielhost kann seinen ARP-Reply auch als L2-Broadcast verschicken, sodass
 alle Hosts in seiner Broadcast Domain den Reply erhalten. Abhaengig vom
@@ -446,7 +446,7 @@ replies*) oft auch im ARP-Cache gespeichert. Das machen beispielsweise Router
 oft, sodass Hosts im Direktnetzwerk die MAC Adresse ihres Default Gateways
 (insbesondere nach Aenderungen) bestenfalls immer im ARP-Cache haben.
 
-##### Anderes Netzwerk
+\paragraph{Anderes Netzwerk} 
 
 Wenn ein Host eine Nachricht an einen anderen Host im selben Netzwerk senden
 will, und nur dessen IP-Adresse kennt, macht er also einen ARP-Request. Was ist
@@ -480,9 +480,9 @@ uebereinstimmt.
 
 IP-Adressen, welche zur globalen End-zu-End Adresserierung zwischen mehreren
 Direktverbindungsnetzen (Netzwerken), dienen, werden beim Routing aber
-natuerlich __nicht__ veraendert (sofern NAT nicht beachtet wird).
+natuerlich \_\_nicht\_\_ veraendert (sofern NAT nicht beachtet wird).
 
-#### ICMP
+\paragraph{ICMP} 
 
 *ICMP* steht fuer *Internet Control Message Protocoll* und erlaubt den Austausch
 von speziellen Signalnachrichten im Internet. Beispielsweise ist das notwendig,
@@ -508,7 +508,7 @@ die folgenden Felder:
 4. 32 Bit die vom Typ der ICMP Nachricht abhaengen.
 5. Weitere variable Daten.
 
-##### `ping`
+\paragraph{`ping`} 
 
 Ein Beispiel von ICMP Nachrichten sind *Echo Request* und *Echo Reply*
 Nachrichten. Hierbei kann ein Host einem anderen Host einen Echo Request senden
@@ -530,7 +530,7 @@ Linux Systeme geben zum Beispiel jedem `ping` Prozess einen eindeutigen
 *Identifier*, und dann jedem Request ausgehend aus einem bestimmten `ping`
 Prozess eine aufsteigende Sequence Number.
 
-##### `traceroute`
+\paragraph{`traceroute`} 
 
 Was man mit ICMP Echo Request/Reply Nachrichten zum Beispiel machen kann, ist
 den `traceroute` Befehl zu implementieren. Dieser berichtet, welche Hops ein
@@ -550,7 +550,7 @@ Paket von Host $A$ zu Host $B$ macht. Er wird wie folgt implementiert:
 So kann Host $A$ also genau nachvollziehen, welchen Weg ein Paket zu $B$ gehen
 wuerde.
 
-#### IP-Zuteilung
+\paragraph{IP-Zuteilung} 
 
 Jeder Host wo gibt hat also eine global eindeutige IP-Adresse. Aber woher
 bekommt er diese ueberhaupt? Es gibt zwei Moeglichkeiten:
@@ -622,25 +622,27 @@ weitere Informationen, zum Beispiel:
 * MTU im Direktnetzwerk
 * NTP Server zur Zeitsynchronisation
 
-#### Adressklassen
+\paragraph{Adressklassen} 
 
 Wie schon besprochen sind bestimmte Anteile einer IP-Adresse immer fuer das
 Netzwerk designiert, und andere fuer Hosts. Wo genau die Trennlinie zwischen
 Netzwerk- und Hostteil ist, haengt von der *Adressklasse* der IP-Adresse ab. Es
 gibt naemlich folgende Adressklassen:
 
-| Klasse | 1. Oktett | Anteile | #Netze | #Hosts |
-|:-------|:----------|:--------|:-------|:-------|
-|   A    | 0xxxxxxx  | N.H.H.H |  128   |  2^24  |
-|   B    | 10xxxxxx  | N.N.H.H |  2^14  |  2^16  |
-|   C    | 110xxxxx  | N.N.N.H |  2^21  |  2^8   |
-|   D    | 1110xxxx  |        Multicast          |
-|   E    | 1111xxxx  |        reserviert         |
+\begin{tabular}{|l|l|l|l|l|}
+Klasse & 1. Oktett & Anteile & \# Netze & \# Hosts \\\hline
+   A    & 0xxxxxxx  & N.H.H.H &  128   &  $2^24$ \\
+   B    & 10xxxxxx  & N.N.H.H &  $2^14$  &  $2^16$ \\
+   C    & 110xxxxx  & N.N.N.H &  $2^21$  &  $2^8$  \\
+   D    & 1110xxxx  &        Multicast          \\
+   E    & 1111xxxx  &        reserviert         \\
+\hline
+\end{tabular}
 
 Im Jahre 1981 war diese Aufteilung mit Sicherheit logisch. Zum Einen konnte sich
 niemand vorstellen, dass man mit 32 Bit niemals auskommen wuerde. Zum Anderen
 dachte man dass es deswegen OK waere, bestimmten grossen Organisationen wie
-Apple, MIT oder AT&T so gigantische Adressbereiche zu geben.
+Apple, MIT oder AT\&T so gigantische Adressbereiche zu geben.
 
 Heutzutage merkt man aber zwei Sachen:
 
@@ -651,7 +653,7 @@ Heutzutage merkt man aber zwei Sachen:
 Deswegen wurde 1998 auch IPv6 eingefuehrt, womit wir uns spaeter beschaeftigen
 werden.
 
-#### Subnetting
+\paragraph{Subnetting} 
 
 Man hat schnell gemerkt, dass Adressklassen (*Classful Routing*) nicht effizient
 oder effektiv sind. Man brauchte einen neue Moeglichkeit, Netzwerke zu
@@ -710,7 +712,7 @@ einfach neben einer IP-Adresse, nach einem Schraegstrich, die Anzahl an
 Netzwerkbits in der Subnetzmaske. Oben hatten wir beispielsweise 24
 Netzwerkbits. Dann wuerden wir die IP-Adresse als *192.168.0.255/24* notieren.
 
-#### Supernetting
+\paragraph{Supernetting} 
 
 Wir koennen also einen groesseren Adressraum durch Subnetting in kleinere,
 logisch gruppierte Netzwerke aufteilen. Das gleiche koennen wir natuerlich auch
@@ -740,7 +742,7 @@ Da der ISP uns die beiden Subnetzraeume gegeben hat, hat er uns ja im Prinzip
 dieses Supernet gegeben. Also gehoert dieses /23 Supernet auch sicher uns. Falls
 uns das andere /24 Netz nicht gehoert, duerfen wir das natuerlich nicht machen.
 
-#### Besondere Adressbereiche
+\paragraph{Besondere Adressbereiche} 
 
 Es gibt einige Adressbereiche in IPv4, die eine besondere Bedeutung haben,
 naemlich:
@@ -753,10 +755,10 @@ naemlich:
   - Adressen aus diesem Bereich werden nicht geroutet (nicht von Routern
     weitergeleitet).
 * 127.0.0.0/8: *Loopback-Adressen*
-  - Identifiziert den lokalen Rechner (__localhost__): 127.0.0.1 (127.0.0.0 ist
+  - Identifiziert den lokalen Rechner (\_\_localhost\_\_): 127.0.0.1 (127.0.0.0 ist
     die Netzadresse, keine Host-Adresse!)
   - Wird nicht geroutet.
-  - Solche Pakete werden nie gesendet, sondern einfach __gelooped__
+  - Solche Pakete werden nie gesendet, sondern einfach \_\_gelooped\_\_
     (*loopback*). Sprich, es wird sozusagen vom "Send-Buffer" einfach in den
     "Receive-Buffer" am selben Rechner gelegt.
 * 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16: *Private Adressbereiche*
@@ -773,7 +775,7 @@ naemlich:
   - Wird von Linux automatisch auf die L2 (Ethernet) Broadcastadresse gesendet.
   - Wird nicht geroutet.
 
-### IPv6
+\subsubsection{IPv6} 
 
 IPv4 wird auf Grund seiner Adressknappheit langsam aber sicher obsolet. Auch ist
 es von seiner Header Struktur einfach nicht effizient genug. Deswegen wurde 1995
@@ -791,7 +793,7 @@ Neuerungen bei IPv6 gegenueber IPv4 sind:
 
 Wir werden nun die Eigenheiten von IPv6 detaillierter betrachten.
 
-#### Adressformat
+\paragraph{Adressformat} 
 
 IPv6 Adressen sind 128 Bit lang, was 16 Bytes entspricht. In Dotted-Decimal
 Notation, wie sie bei IPv4 benutzt wird, waeren also 16 Gruppen zur
@@ -849,7 +851,7 @@ Man kann sie also wie folgt abkuerzen:
 
 Die ganze Adresse ist hierbei der Praefix.
 
-#### Headerformat
+\paragraph{Headerformat} 
 
 Eine der Neuheiten bei IPv6 gegenueber IPv4 ist ein neues Headerformat. Es ist
 viel einfacher als bei IPv4 und besteht aus:
@@ -872,7 +874,7 @@ viel einfacher als bei IPv4 und besteht aus:
 7. Bits 54-181: *Source Address*. Die 128 Bit lange IPv6 IP-Adresse des Senders.
 8. Bits 182-309: *Destination Address*. Die 128 Bit lange IPv6 IP-Adresse des Empfaengers.
 
-##### Extension Header
+\paragraph{Extension Header} 
 
 Was neben TCP/UDP oder ICMP noch im *Next Header* Feld eines IPv6 Headers stehen
 kann, ist *Extension Header*. Eine IPv6 Extension Header ist ein Zusatz zum
@@ -917,12 +919,12 @@ aus:
 4. Bit 32-63: *Identification*
 
 Diese Teile sollten von IPv4 Fragmentierung noch bekannt sein. Es sei aber
-angemerkt: __Fragmentierung passiert bei IPv6 nur beim Sender__! Der Sender muss
+angemerkt: \_\_Fragmentierung passiert bei IPv6 nur beim Sender\_\_! Der Sender muss
 also wissen, was die MTU auf dem Weg von sich selbst bis zum Sender ist. Diese
 Information kann ihm beispielsweise durch einen DHCP-Server (oder Router)
 mitgeteilt werden.
 
-#### Besondere Adressen
+\paragraph{Besondere Adressen} 
 
 Wie bei IPv4 gibt es wieder bestimmte *spezielle* Adressen:
 
@@ -949,7 +951,7 @@ Wie bei IPv4 gibt es wieder bestimmte *spezielle* Adressen:
   - Adressen, die eine bestimmte Gruppe von Hosts adressieren.
   - Werden geroutet.
 
-#### Multicast
+\paragraph{Multicast} 
 
 Ueberfliegen wir noch einmal, welche Arten von Adressierung es gibt:
 
@@ -985,8 +987,8 @@ nicht in dieser Gruppe, braucht er es auch gar nicht weiter zu bearbeiten
 * ff02::1 - *All Nodes*
   - Adressiert alle Knoten auf dem lokalen Link.
   - Man bemerke: Es gibt in IPv6 keine explizite Broadcast Adresse
-    (__insbesondere ist die hoechste Adresse in einem Subnetz eine valide IPv6
-    Adresse!__), sondern nur diese spezielle Art von Multicast.
+    (\_\_insbesondere ist die hoechste Adresse in einem Subnetz eine valide IPv6
+    Adresse!\_\_), sondern nur diese spezielle Art von Multicast.
   - Jeder Host, der IPv6 spricht, ist in dieser Gruppe. Das ist also die oben
     angesprochene Gruppe, in welcher mit Sicherheit jeder Host ist.
 * ff02::2 - *All Routers*
@@ -1035,7 +1037,7 @@ gemeldet wird, wenn ein Host Teil einer neuen Gruppe wird, kann der Switch aber
 auch fuer andere Gruppen immer genau wissen, ob auf einem Port Mitglieder dieser
 Gruppe sind, oder nicht.
 
-#### Solicited Node Address
+\paragraph{Solicited Node Address} 
 
 Es seien noch einige Details zu *Solicited Node Adressen* (*SNA*)
 angemerkt. Zuerst wollen wir uns ansehen, wann und wie eine solche Adresse
@@ -1047,7 +1049,7 @@ Solicited Node Adresse. Diese wird erzeugt, inde man die letzten drei Byte (24
 Bit; 6 Ziffern) der urspruenglichen IP Adresse an den 104-Bit Praefix
 `ff02::1:ff00:0` hinten anhaengt. Also:
 
-```
+\begin{verbatim}
 2001:0db8:1ee7:2ea2:0921:2e11:d2c6:938b
                                 ^^^^^^^     Relevant
 ff02:0000:0000:0000:0000:0001:ff00:0000  (ff02::1:ff00:0)
@@ -1055,7 +1057,7 @@ ff02:0000:0000:0000:0000:0001:ff00:0000  (ff02::1:ff00:0)
 ff02:0000:0000:0000:0000:0001:ffc6:938b
 =>
 ff02::1:ffc6:938b (Solicited Node Address)
-```
+\end{verbatim}
 
 Wir haben also wie man hier sieht, `ff02::1:ffc6:938b` als Solicited Node Adress
 erhalten. Was bedeutet das aber, genau? Bzw. was macht man mit dieser Adresse?
@@ -1114,7 +1116,7 @@ die Hosts an diesen IP-Adresse durch Multicasts erreichen koennen. Wir bilden
 also die SNA Gruppen, indem wir die unteren 24 Bit der IPv6 Adressen an den
 Praefix `ff02::1:ff00:0/104` knuepfen:
 
-```
+\begin{verbatim}
 ff02::1:ff00:0             +
 fe80::dcad:beff:efef:affe
                   ^^^^^^^
@@ -1127,7 +1129,7 @@ fe80::dcad:beff:efef:affe
                   ^^^^^^^
 -------------------------
 ff02::1:ffef:affe        (B)
-```
+\end{verbatim}
 
 Wie man sieht haben beide Hosts die selbe SNA Multicast Adresse fuer diesen
 lokalen Link. Sendet ein Host also ein Neighbor Discovery Paket an diese SNA, um
@@ -1141,7 +1143,7 @@ genaue 128-Bit Target Adresse drin, welche natuerlich nur entweder (A) oder (B)
 gehoeren wird. Nur einer der beiden Hosts wuerde im Weiteren dann einen Neighbor
 Advertisement senden.
 
-#### Multicast Abbildung
+\paragraph{Multicast Abbildung} 
 
 Um ein IPv6 Multicast Paket zu senden, muss auch auf Schicht 2 eine
 entsprechende Multicast Adresse gebildet werden. Hierfuer gibt es einen
@@ -1174,7 +1176,7 @@ so bilden:
 
 Das ergibt dann also `33:33:0:0:0:2` fuer den All-Routers Multicast.
 
-##### Hypothese
+\paragraph{Hypothese} 
 
 Wieso werden die unteren 32-Bit der IPv6 Adresse auf die MAC-Adresse abgebildet?
 Dazu zwei Beobachtungen:
@@ -1187,9 +1189,9 @@ Dazu zwei Beobachtungen:
   Multicasts mit Praefix `ff02`. Deswegen die unteren vier Oktette der IPv6
   Multicast Adresse. Dann muessten die 80 Bit zwischen `ff02` und diesen unteren
   32 Bit also eben immer Null sein. Scheint auch so zu sein:
-  https://en.wikipedia.org/wiki/Multicast_address.
+  https://en.wikipedia.org/wiki/Multicast\_address.
 
-#### SLAAC
+\paragraph{SLAAC} 
 
 IPv6 hat ein Feature, welches ermoeglicht, dass sich Hosts eigene Link-Local
 IPv6 Adressen aus ihrer MAC Adresse generieren koennen. Dieses Feature heisst
@@ -1231,7 +1233,7 @@ in Form von unsolicited Router Advertisements erfahren kann. Solche globalen
 Adressen mit eingebetteter MAC Adresse sind aber nicht unbedingt sicher, da man
 so einen Host immer verfolgen kann. Hierzu gibt es IPv6 Privacy Extensions.
 
-#### ICMPv6
+\paragraph{ICMPv6} 
 
 Es gibt auch bei IPv6 wieder ICMP Nachrichten. ICMPv6 Header sind aehnlich wie
 jene bei IPv4 aufgebaut:
@@ -1261,7 +1263,7 @@ Fehlererkennungsverfahren optimal ist. Man muss aber Router auch nicht unnoetig
 belasten. Wuerde man in diesen Pseudo Header beispielsweise noch den Hop Limit
 einfuegen, so muesste man natuerlich nach jedem Hop die Checksum neu berechnen.
 
-#### NDP
+\paragraph{NDP} 
 
 Das *Neighbor Discovery Protocol* (NDP) ist Bestandteil von ICMPv6 und bietet
 eine Reihe von Funktionalitaeten an, wofuer man bei IPv4 teilweise eigene
@@ -1323,8 +1325,8 @@ ICMPv6 Nachricht ist) besteht aus den folgenden Teilen:
 4. Einer NDP *Option*. NDP unterstuetzt naemlich auch wieder verschiedene
    Optionen, welche aufgebaut sind aus:
    1. *Type* (1 = Source Link Layer Address)
-   2. *Length* (hier 1) in __Vielfachen von 8 Byte__ fuer __die
-      ganze Option__. Das passt bei Solicications z.B. eben genau: einen Byte
+   2. *Length* (hier 1) in \_\_Vielfachen von 8 Byte\_\_ fuer \_\_die
+      ganze Option\_\_. Das passt bei Solicications z.B. eben genau: einen Byte
       fuer den Type, einen Byte fuer diese Length und dann 6 Bytes fuer:
   3. *Source Link Address*: Die MAC-Adresse des Quellhosts (der dieses NDP Paket
      absendet).
@@ -1372,7 +1374,7 @@ aufgebaut als die Soliciation:
    2. Length: 1
    3. Target Link Adress: Die gesuchte MAC Adresse.
 
-## Routing
+\subsection{Routing} 
 
 Wir haben nun in genuegender Laenge uns damit beschaeftigt, wie Pakete innerhalb
 von Direktnetzwerken zirkuliert werden. Nun interessieren wir uns aber noch
@@ -1384,7 +1386,7 @@ Varianten:
 * Statisches Routing
 * Dynamisches Routing
 
-### Routing Tabellen
+\subsubsection{Routing Tabellen} 
 
 Bei Routing sprechen wir allgemein immer von *Routing Tabellen*. Wenn wir ein
 Paket an einen Router senden, entscheidet er anhand dieser Tabellen, wohin er
@@ -1431,7 +1433,7 @@ matching* fuehren und die eigentliche Vorgehensweise beim Routing erklaeren:
 1. Die Adressen sind nach absteigender Praefix-Laenge sortiert.
 2. Die letzte Netzwerkadresse in der Destination-Spalte ist 0.0.0.0/0.
 
-#### Longest Prefix Matching
+\paragraph{Longest Prefix Matching} 
 
 Ein Router erhaelt nun also ein Paket. Wie routet er es? Er geht so vor:
 
@@ -1523,7 +1525,7 @@ z.B. bei Routern ganz ganz weit oben in der Hierarchie des Internet, wo es gar
 keine Default Gateways mehr gibt. Diesen Raum nennt man deswegen auch *Default
 Free Zone*. Solche Router muessen also immer weiter wissen.
 
-### Dynamisches Routing
+\subsubsection{Dynamisches Routing} 
 
 Bisher haben wir noch nicht besprochen, wie Eintraege in unsere Routing Tabelle
 ueberhaupt reinkommen. Die einfachste Variante waere natuerlich, sie manuell zu
@@ -1534,7 +1536,7 @@ ansehen wollen. Jedenfalls ist hierbei immer die Kommunikation von Routing
 Tabellen und Informationen zwischen Routern ein integraler Bestandteil, sowie
 auch die Methoden, durch welche kuerzeste Pfade gefunden werden.
 
-#### Routing Protokolle
+\paragraph{Routing Protokolle} 
 
 Es gibt zwei verschiedene, grundlegende Arten von Routing Protokollen:
 Distanz-Vektor Protokolle und Link-State Protokolle. Diese haben folgende
@@ -1545,7 +1547,7 @@ Eigenschaften:
      zu einem Ziel (Destination).
    * Router haben keine Information ueber die Netztopologie, sehen also nicht
      ueber ihre unmittelbaren Nachbarn hinaus.
-   * Router tauschen untereinander lediglich __akkumulierte Kosten__ aus.
+   * Router tauschen untereinander lediglich \_\_akkumulierte Kosten\_\_ aus.
    * Lassen sich verteilt implementieren.
    * Finden kuerzeste Wege mittels dem Algorithmus von *Bellman-Ford*, welcher
      nur Informationen ueber die unmittelbaren Knoten des Nachbars benoetigt.
@@ -1585,7 +1587,7 @@ einen Heap fuer das gesamte Netzwerk).
 
 https://keepingitclassless.net/2011/10/link-state-vs-distance-vector-the-lowdown/
 
-#### Bellman-Ford
+\paragraph{Bellman-Ford} 
 
 Der Algorithmus von Bellman-Ford laesst sich wie folgt implementieren:
 
@@ -1598,8 +1600,8 @@ Der Algorithmus von Bellman-Ford laesst sich wie folgt implementieren:
 
 Dann liest sich der Algorithmus in Pseudo-Code wie folgt:
 
-```
-# Initialisierung
+\begin{verbatim}
+#Initialisierung
 for n in Nodes:
 	parent[n] = -1
 	distance[n] = 0 if n == s else infinity
@@ -1616,7 +1618,7 @@ while distance[n] has changed for some n in N:
 				S.put(j)
 	T = S
 
-```
+\end{verbatim}
 
 Praktisch gesehen machen wir im Prinzip Breadth-First-Search. Noch weitere
 konkrete Implementierungsdetails:
@@ -1629,7 +1631,7 @@ konkrete Implementierungsdetails:
   betrachten, um i
 * Wir enqueuen dennoch Knoten.
 
-```
+\begin{verbatim}
 struct Node {
 	var distance,
 	var parent,
@@ -1656,12 +1658,12 @@ function bellman-ford(graph, root):
             		queue.enqueue(edge.destination.id)
 					edge.destination.distance = node.distance + edge.cost
 					edge.destination.parent = node
-```
+\end{verbatim}
 
 Wichtig hierbei ist, dass jeder Knoten nur seine unmittelbaren Nachbarn zu
 kennen braucht bzw. die Kosten zu ihnen.
 
-#### Dijkstra
+\paragraph{Dijkstra} 
 
 Beim Dijkstra Algorithmus, welcher fuer Link-State Protokolle verwendet wird,
 haben wir den folgenden Setup:
@@ -1674,7 +1676,7 @@ haben wir den folgenden Setup:
   durch den Knoten identifiziert sein, wobei der Heap nach den Kosten geordnet
   ist (MinHeap).
 
-```
+\begin{verbatim}
 for n in Nodes:
 	parent[n] = -1
 	distance[n] = 0 if n == s else infinity
@@ -1689,9 +1691,9 @@ while T != N:
 		if distance[i] + costs[i, j] < distance[j]:
 			queue.decreaseKey(j, distance[i] + costs[i, j])
 			parent[j] = i
-```
+\end{verbatim}
 
-#### Vergleich
+\paragraph{Vergleich} 
 
 Wir wollen nun noch diese beiden Algorithmen bezueglich ihrer Eigenschaften
 vergleichen:
@@ -1714,7 +1716,7 @@ vergleichen:
      also schlechter verteilen.
    * Asymptotisch bessere Laufzeit: $O(|E| + |N| \cdot |N|)$
 
-#### RIP
+\paragraph{RIP} 
 
 *RIP* steht fuer *Routing Information Protocol* und ist ein sehr einfaches,
 altes Routing Protokoll, das bereits 1988 eingefuehrt wurde. Es dient dazu,
@@ -1825,12 +1827,12 @@ nicht in seine Tabelle uebernehmen.
                 | B |xx|  1 |
 ```
 
-#### Probleme
+\paragraph{Probleme} 
 
 Wir wollen zwei Probleme betrachten, die es bei RIP bzw. Distanz-Vektor
 Protokollen allgemein, geben kann.
 
-##### Langsame Updates
+\paragraph{Langsame Updates} 
 
 Das erste Problem ist, dass es bei diesen rundenweisen, synchronen Updates oft
 sehr lange dauern kann, bis Updates zu jedem Router durchsickern. Da das
@@ -1857,7 +1859,7 @@ das Netzwerk haben, auch von der *Konvergenzzeit*. Sind also alle Router im
 Netzwerk nach einer veraenderten Route "stabil", haben sie *Konvergenz*
 erreicht. Bei RIP ist die Konvergenzzeit eben sehr hoch.
 
-##### Count to Infinity
+\paragraph{Count to Infinity} 
 
 Betrachten wir fuer dieses Problem das folgende Netzwerk (mit eingezeichneten
 Kantenkosten):
@@ -1938,7 +1940,7 @@ Es gibt hierfuer drei Loesungen:
      er wohl nicht selbst in dieser Route drin ist.
    * Somit werden Zyklen im Graph also vermieden.
 
-#### Echte Routing Protokolle
+\paragraph{Echte Routing Protokolle} 
 
 Wir haben schon RIP als ein echtes Routing Protokoll kennengelernt. Es wird aber
 heute fast nirgends mehr benutzt, weil es schon sehr alt ist und viele
@@ -1971,9 +1973,9 @@ IGRP hat beispielsweise fuenf verschiedene Metriken:
 Es benutzt einen maximalen Hop Count von 100 und multicastet Routing Tabellen
 alle 90 Sekunden.
 
-https://en.wikipedia.org/wiki/Interior_Gateway_Routing_Protocol
+https://en.wikipedia.org/wiki/Interior\_Gateway\_Routing\_Protocol
 
-### Autonome Systeme
+\subsubsection{Autonome Systeme} 
 
 Die oben vorgestellten Protokolle betrachten alle Pfade im Netz objektiv nach
 ihren Metriken (Hop Count, Bandbreite, Delay etc.). Sie bieten aber keine
@@ -2005,10 +2007,10 @@ Die Antwort ist:
   Gateway Protocol* (EGP) verwendet. Das einzige in der Praxis genutzte EGP ist
   das *Border Gateway Protocol* (BGP).
 
-Autonome Systeme sind meist kommerzielle Gruppen, wie AT&T oder
+Autonome Systeme sind meist kommerzielle Gruppen, wie AT\&T oder
 Vodafone. Hierbei gibt es dann noch drei Schichten, auch *Tiers*, genannt. Tier
 3 AS sind die groessten, monolithischten Internet Service Provider (ISPs) wie
-AT&T. Auf Tier 2 sind kleinere AS (Comcast, Tele2) und auf Tier 3 wiederum.
+AT\&T. Auf Tier 2 sind kleinere AS (Comcast, Tele2) und auf Tier 3 wiederum.
 
 Damit Knoten im einen AS mit Knoten in einem anderen AS kommunizieren koennen,
 muessen AS irgendwie miteinander verbunden werden. Hierbei gibt es zwei
